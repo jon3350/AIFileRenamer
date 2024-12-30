@@ -1,0 +1,36 @@
+/* Apply a background color to the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Style the heading */
+h1 {
+    color: #007acc;
+    margin-top: 20px;
+}
+
+/* Style the paragraph */
+p {
+    margin: 20px 0;
+}
+
+/* Style the link */
+a {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #007acc;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Add hover effect to the link */
+a:hover {
+    background-color: #007acc;
+    color: white;
+}
