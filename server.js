@@ -31,10 +31,32 @@ http.createServer(function (req, res) {
                 res.end();
             }
         });
-    } else if (req.url == '/style.css') {
-        res.setHeader('Content-type', 'text/css');
-        res.write(fs.readFileSync('styles.css'));
-        res.end();
+    } else if (url == '/styles.css') {
+        console.log("hey", url)
+        fs.readFile("styles.css", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("Styles.css NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/css' });
+                res.write(pgres);
+                res.end();
+            }
+        });
+    } else if (url == '/script.js') {
+        console.log("hey", url)
+        fs.readFile("script.js", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("Styles.css NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/js' });
+                res.write(pgres);
+                res.end();
+            }
+        });
     }
 
 }).listen(3000, function () {

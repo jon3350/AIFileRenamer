@@ -3,24 +3,12 @@
 
 <head>
     <title>Hello World</title>
-    <script>
-        // Function to dynamically load a CSS file
-        function loadStylesheet(url) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = url;
-            link.type = 'text/css';
-            document.head.appendChild(link);
-        }
-    
-        // Call the function to load the CSS file
-        loadStylesheet('/style.css');
-    </script>
-    <link rel="stylesheet" href="localhost:3000/styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <h1>This is the Homepage</h1>
+    <h1 id="test123">This is the Homepage</h1>
     <p><a href="/tailPage">Go to Next Page</a></p>
 </body>
 
