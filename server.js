@@ -1,20 +1,37 @@
-function abc() {
-  console.log("HI");
-}
+//app.js
 
-setTimeout(abc, 1000);
-
-setTimeout( () => console.log("BYE"), 2000 );
+import http from 'http';
+import fs from 'fs';
 
 
-const arr = [1, 2, 3, 4, 5, 6]
+http.createServer(function (req, res) {
+    var url = req.url;
+    if (url === "/") {
+        fs.readFile("head.html", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("HEAD.HTML NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.write(pgres);
+                res.end();
+            }
+        });
+    } else if (url === "/tailPage") {
+        fs.readFile("tail.html", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("TAIL.HTML NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.write(pgres);
+                res.end();
+            }
+        });
+    }
 
-
-arr.forEach( (x,i) => {
-  if(i%3 == 0) {
-    console.log(x)
-  }
-} 
-)
-
-// kjlkjklsjflkejlkwejrlwejrlk
+}).listen(3000, function () {
+    console.log("SERVER STARTED PORT: 3000");
+});
