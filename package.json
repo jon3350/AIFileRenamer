@@ -1,13 +1,17 @@
 {
   "dependencies": {
     "dotenv": "^16.4.7",
-    "openai": "^4.77.0"
+    "openai": "^4.77.0",
+    "pdf-parse": "^1.1.1",
+    "pdf2json": "^3.1.4",
+    "pdfreader": "^3.0.6",
+    "zod": "^3.24.1"
   },
   "name": "filetester1",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "main.js",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node main.js"
   },
   "keywords": [],
   "author": "",

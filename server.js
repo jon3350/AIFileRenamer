@@ -1,17 +1,18 @@
-import {config} from "dotenv"
-config()
+function abc() {
+  console.log("HI");
+}
 
-import OpenAI from "openai";
-const openai = new OpenAI( {apiKey: process.env.OPENAI_API_KEY} );
+setTimeout(abc, 1000);
 
-const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-        {
-            role: "user",
-            content: "Write a haiku about recursion in programming.",
-        },
-    ],
-});
+setTimeout( () => console.log("BYE"), 2000 );
 
-console.log(completion.choices[0].message.content);
+
+const arr = [1, 2, 3, 4, 5, 6]
+
+
+arr.forEach( (x,i) => {
+  if(i%3 == 0) {
+    console.log(x)
+  }
+} 
+)
