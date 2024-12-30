@@ -2,14 +2,28 @@
 <html>
 
 <head>
-    <title>Hello World</title>
+    <title>Allendale Machinery Systems File Renamer</title>
     <link rel="stylesheet" type="text/css" href="/styles.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <h1 id="test123">This is the Homepage</h1>
-    <p><a href="/tailPage">Go to Next Page</a></p>
+    <h1 id="test123">Allendale Machinery Systems File Renamer</h1>
+    <br>
+    <p>This website takes in a directory of files and renames each file in a given convention</p>
+    <br>
+    <p onclick="selectDirectory()">Pick directory</p>
+
+
+    <script>
+    async function selectDirectory() {
+    try {
+        directoryHandle = await window.showDirectoryPicker();
+    } catch (err) {
+      console.error('Directory selection cancelled or failed', err);
+    }
+    }
+    </script>
 </body>
 
 </html>

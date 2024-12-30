@@ -17,6 +17,12 @@ h1 {
 /* Style the paragraph */
 p {
     margin: 20px 0;
+    color: #007acc;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #007acc;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 /* Style the link */
