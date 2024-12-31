@@ -2,7 +2,7 @@
 
 import http from 'http';
 import fs from 'fs';
-
+import * as formidable from 'formidable';
 
 http.createServer(function (req, res) {
     var url = req.url;
@@ -18,6 +18,27 @@ http.createServer(function (req, res) {
                 res.write(pgres);
                 res.end();
             }
+        });
+    } else if (url === "/upload" && req.method === "POST") {
+        const form = new formidable.IncomingForm();
+        form.uploadDir = "./uploads"; // Directory to save uploaded files
+        form.keepExtensions = true; // Keep file extensions
+
+        form.parse(req, (err, fields, files) => {
+            if (err) {
+                console.error("Error parsing form:", err);
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.write("Internal Server Error");
+                res.end();
+                return;
+            }
+
+            console.log("Fields:", fields);
+            console.log("Files:", files);
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.write(JSON.stringify({ message: "File uploaded successfully!", file: files.uploadedFile }));
+            res.end();
         });
     } else if (url === "/tailPage") {
         fs.readFile("tail.html", function (err, pgres) {
@@ -53,19 +74,6 @@ http.createServer(function (req, res) {
                 res.end();
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/js' });
-                res.write(pgres);
-                res.end();
-            }
-        });
-    } else if (url == '/parser.js') {
-        console.log("hey", url)
-        fs.readFile("parser.js", function (err, pgres) {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.write("parser.js NOT FOUND");
-                res.end();
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/javascript' });
                 res.write(pgres);
                 res.end();
             }

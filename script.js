@@ -22,14 +22,33 @@ async function selectDirectory() {
 
 async function processDirectory(directory)
 {
-    parserModule =  await import("./parser.js");
     console.log(directory.name);
     let directoryEntries = directory.values();
     console.log(directoryEntries);
     for await (let x of directoryEntries)
     {
-        console.log(x);
-        console.log(x.getFile());
-        //x.getFile().then(parserModule.convertPdfToText);
+        file = await x.getFile();
+        console.log(file);
+        await sendFile(file);
+    }
+}
+
+async function sendFile(file) {
+    const formData = new FormData();
+    formData.append('uploadedFile', file); // Add the file to the form data
+
+    try {
+        const response = await fetch('http://localhost:3000/upload', {
+            method: 'POST',
+            body: formData, // Send the form data
+        });
+
+        if (response.ok) {
+            console.log(`File ${file.name} uploaded successfully!`);
+        } else {
+            console.error(`Failed to upload file ${file.name}:`, response.statusText);
+        }
+    } catch (error) {
+        console.error(`Error uploading file ${file.name}:`, error);
     }
 }
