@@ -4,6 +4,7 @@ import http from 'http';
 import fs from 'fs';
 import * as formidable from 'formidable';
 import path from 'path';
+import {generateTitleFromPdf} from "./main.js";
 
 http.createServer(function (req, res) {
     var url = req.url;
@@ -22,9 +23,8 @@ http.createServer(function (req, res) {
         });
     } else if (url === "/upload" && req.method === "POST") {
         const form = new formidable.IncomingForm();
-
-       form.uploadDir = './uploads';
-       form.keepExtensions = true;
+        form.uploadDir = './uploads';
+        form.keepExtensions = true;
 
         // Handle file uploads
         form.on('fileBegin', (formName, file) => {
@@ -48,6 +48,27 @@ http.createServer(function (req, res) {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.write(JSON.stringify({ message: "File uploaded successfully!", file: files.uploadedFile }));
             res.end();
+
+            let filepath = ".\\" + files.uploadedFile[0].filepath;
+            console.log(filepath);
+
+            generateTitleFromPdf(filepath).then(function (pdfDetailsAI) {
+                console.log("again");
+                console.log(pdfDetailsAI);
+                console.log(pdfDetailsAI.partNumber);
+                let paddedRevision = pdfDetailsAI.revision.padStart(2, " ");
+                let paddedMonth = pdfDetailsAI.monthAsNumber.padStart(2, "0");
+                let sanitizedTitle = pdfDetailsAI.title.replace(/ /g, "_")
+
+                let newName = pdfDetailsAI.partNumber + "_rev_" + paddedRevision + "_" + pdfDetailsAI.year + "." + 
+                paddedMonth + "_" + sanitizedTitle;
+
+                let newFile = form.uploadDir + "/" + newName + ".pdf";
+                console.log(newFile);
+
+                fs.rename(filepath, newFile,() => {console.log("Success");});
+            }, () => {console.log("error reading file");}
+            );
         });
     } else if (url === "/tailPage") {
         fs.readFile("tail.html", function (err, pgres) {

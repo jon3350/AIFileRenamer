@@ -14,8 +14,8 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 // Define the schema for the structured data
 const InstructionManualExtraction = z.object({
   partNumber: z.string(),
-  revisionCombo: z.string(),
-  month: z.string(),
+  revision: z.string(),
+  monthAsNumber: z.string(),
   year: z.string(),
   title: z.string()
 });
@@ -41,6 +41,8 @@ export async function processInstructionManual(textContent) {
     // const instructionManualJSON = completion.choices[0].message.parsed;
     // console.log("Extracted Instruction Manual Data:", instructionManualJSON);
     // return instructionManualJSON;
+
+    return completion.choices[0].message.parsed;
   } catch (error) {
     console.error("Error processing the Instruction Manual:", error);
   }
@@ -57,4 +59,3 @@ async function miniTest() {
     console.error("error: " + err)
   }
 }
-// miniTest()

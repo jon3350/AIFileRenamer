@@ -2,16 +2,8 @@ import { convertPdfToText } from './parser.js'
 import { processInstructionManual} from './titleGenerator.js'
 import fs from 'fs';
 
-async function selectDirectory() {
-  try {
-      directoryHandle = await window.showDirectoryPicker();
-  } catch (err) {
-    console.error('Directory selection cancelled or failed', err);
-  }
-}
 
-async function generateTitleFromPdf() {
-    const pdfPath = "";
+export async function generateTitleFromPdf(pdfPath) {
     const outputPath = 'output.txt';
   
     // Call the parser function
@@ -25,8 +17,11 @@ async function generateTitleFromPdf() {
 
       // title generation logic from titleGenerator.js. It also prints it out for now
       // THIS MAY RUN BEFORE THE OUTPUT FILE IS UPDATED...
-      await processInstructionManual(content);
+      let pdfDetailsAI = await processInstructionManual(content);
       console.log("ai used")
+      console.log(pdfDetailsAI);
+
+      return pdfDetailsAI;
 
       // console.log(`File Content: ${content}`); 
     } catch (err) {
@@ -34,5 +29,3 @@ async function generateTitleFromPdf() {
     }
   }
   
-  selectDirectory();
-  generateTitleFromPdf();

@@ -42,5 +42,5 @@ export async function convertPdfToText(_pdfPath, _outputPath) {
         console.error("Error processing PDF buffer:", err);
     }
 
-    console.log("troll")
+    console.log("parser")
 }
