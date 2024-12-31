@@ -3,6 +3,7 @@
 import http from 'http';
 import fs from 'fs';
 import * as formidable from 'formidable';
+import path from 'path';
 
 http.createServer(function (req, res) {
     var url = req.url;
@@ -21,8 +22,16 @@ http.createServer(function (req, res) {
         });
     } else if (url === "/upload" && req.method === "POST") {
         const form = new formidable.IncomingForm();
-        form.uploadDir = "./uploads"; // Directory to save uploaded files
-        form.keepExtensions = true; // Keep file extensions
+
+       form.uploadDir = './uploads';
+       form.keepExtensions = true;
+
+        // Handle file uploads
+        form.on('fileBegin', (formName, file) => {
+            // Customize the file path
+            const sanitizedFileName = file.originalFilename.replace(/[^a-zA-Z0-9.-]/g, '_'); // Sanitize filename
+            file.filepath = path.join('./uploads', sanitizedFileName);
+        });
 
         form.parse(req, (err, fields, files) => {
             if (err) {

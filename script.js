@@ -38,7 +38,7 @@ async function sendFile(file) {
     formData.append('uploadedFile', file); // Add the file to the form data
 
     try {
-        const response = await fetch('http://localhost:3000/upload', {
+        const response = await fetch('./upload', {
             method: 'POST',
             body: formData, // Send the form data
         });
