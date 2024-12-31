@@ -70,7 +70,18 @@ http.createServer(function (req, res) {
                 res.end();
             }
         });
-    } 
+    } else if (url === '/api/file') {
+        // Serve API response
+        fs.readFile('./output.txt', 'utf-8', (err, data) => {
+          if (err) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Error reading file' }));
+          } else {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ content: data }));
+          }
+        });
+    }
 
 }).listen(3000, function () {
     console.log("SERVER STARTED PORT: 3000");

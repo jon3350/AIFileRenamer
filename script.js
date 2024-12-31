@@ -12,3 +12,25 @@ document.addEventListener('DOMContentLoaded', () => {
         abc();
     });
 });
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      // Fetch the data from the server using async/await
+      const response = await fetch('/api/file');
+      
+      // Check if the response is okay (status 200-299)
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+      // Parse the JSON data
+      const data = await response.json();
+      
+      // Update the DOM with the fetched data
+        //   document.getElementById('output').textContent = data.content;
+        alert(data.content)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  });
+  
