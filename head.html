@@ -12,18 +12,7 @@
     <br>
     <p>This website takes in a directory of files and renames each file in a given convention</p>
     <br>
-    <p onclick="selectDirectory()">Pick directory</p>
-
-
-    <script>
-    async function selectDirectory() {
-    try {
-        directoryHandle = await window.showDirectoryPicker();
-    } catch (err) {
-      console.error('Directory selection cancelled or failed', err);
-    }
-    }
-    </script>
+    <p><button id="directoryButton">Pick directory</button></p>
 </body>
 
 </html>

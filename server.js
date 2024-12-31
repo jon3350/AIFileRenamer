@@ -49,7 +49,7 @@ http.createServer(function (req, res) {
         fs.readFile("script.js", function (err, pgres) {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.write("Styles.css NOT FOUND");
+                res.write("script.js NOT FOUND");
                 res.end();
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/js' });
@@ -57,8 +57,33 @@ http.createServer(function (req, res) {
                 res.end();
             }
         });
+    } else if (url == '/parser.js') {
+        console.log("hey", url)
+        fs.readFile("parser.js", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("parser.js NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/javascript' });
+                res.write(pgres);
+                res.end();
+            }
+        });
+    } else if (url == '/favicon.ico') {
+        console.log("hey", url)
+        fs.readFile("favicon.ico", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("favicon.ico NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'image/x-icon' });
+                res.write(pgres);
+                res.end();
+            }
+        });
     }
-
 }).listen(3000, function () {
     console.log("SERVER STARTED PORT: 3000");
 });

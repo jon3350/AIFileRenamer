@@ -2,6 +2,13 @@ import { convertPdfToText } from './parser.js'
 import { processInstructionManual} from './titleGenerator.js'
 import fs from 'fs';
 
+async function selectDirectory() {
+  try {
+      directoryHandle = await window.showDirectoryPicker();
+  } catch (err) {
+    console.error('Directory selection cancelled or failed', err);
+  }
+}
 
 async function generateTitleFromPdf() {
     const pdfPath = "";
@@ -27,4 +34,5 @@ async function generateTitleFromPdf() {
     }
   }
   
+  selectDirectory();
   generateTitleFromPdf();

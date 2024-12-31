@@ -34,7 +34,7 @@ export async function convertPdfToText(_pdfPath, _outputPath) {
 
         // Write the extracted text to the output file
         for (const line of extractedText) {
-            await fs.appendFile(_outputPath, line + '\n'); // Append each line to the file
+            await fs.appendFile(_outputPath, line + "\n"); // Append each line to the file
         }
 
         console.log('Extracted text has been written to', _outputPath);
