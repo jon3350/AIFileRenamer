@@ -30,7 +30,7 @@ export async function convertPdfToText(_pdfPath, _outputPath) {
     try {
         // Parse the PDF buffer and extract text
         const extractedText = await parsePdfBuffer(pdfBuffer);
-        console.log("Text extracted from PDF:", extractedText);
+        console.log("Text extracted from PDF");
 
         // Write the extracted text to the output file
         for (const line of extractedText) {
@@ -41,6 +41,4 @@ export async function convertPdfToText(_pdfPath, _outputPath) {
     } catch (err) {
         console.error("Error processing PDF buffer:", err);
     }
-
-    console.log("parser")
 }

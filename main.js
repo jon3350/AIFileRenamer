@@ -4,7 +4,14 @@ import fs from 'fs';
 
 
 export async function generateTitleFromPdf(pdfPath) {
-    const outputPath = 'output.txt';
+
+    const beginningOfFileName = pdfPath.lastIndexOf("\\");
+    const fileExtension = pdfPath.lastIndexOf(".");
+    const outputName = pdfPath.slice(beginningOfFileName + 1, fileExtension);
+
+    const outputPath = "./textOutput/" + outputName;
+
+    console.log(outputPath);
   
     // Call the parser function
     try {
@@ -18,8 +25,7 @@ export async function generateTitleFromPdf(pdfPath) {
       // title generation logic from titleGenerator.js. It also prints it out for now
       // THIS MAY RUN BEFORE THE OUTPUT FILE IS UPDATED...
       let pdfDetailsAI = await processInstructionManual(content);
-      console.log("ai used")
-      console.log(pdfDetailsAI);
+      console.log("AI used")
 
       return pdfDetailsAI;
 

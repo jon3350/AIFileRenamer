@@ -30,14 +30,13 @@ export async function processInstructionManual(textContent) {
     const completion = await openai.beta.chat.completions.parse({
       model: "gpt-4o-2024-08-06",
       messages: [
-        { role: "system", content: "You are an expert at structured data extraction. You will be given unstructured text from a instruction manual and should convert it into the given structure." },
+        { role: "system", content: "You are an expert at structured data extraction. You will be given unstructured text from a instruction manual and should convert it into the given structure. The part number should be two numbers, a dash, and then four numbers; if you can't find that, just do the best you can do. The revision should be one to two letters; if you can't find that, just put \"0\" for the revision." },
         { role: "user", content: userContent }, // Use the file content as user input
       ],
       response_format: zodResponseFormat(InstructionManualExtraction, "instruction_manual_extraction"),
     });
 
     // something's weird when trying to save content in variable
-    console.log(completion.choices[0].message.parsed)
     // const instructionManualJSON = completion.choices[0].message.parsed;
     // console.log("Extracted Instruction Manual Data:", instructionManualJSON);
     // return instructionManualJSON;

@@ -42,20 +42,19 @@ http.createServer(function (req, res) {
                 return;
             }
 
-            console.log("Fields:", fields);
-            console.log("Files:", files);
+            console.log("Recieved file:", files);
 
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.write(JSON.stringify({ message: "File uploaded successfully!", file: files.uploadedFile }));
             res.end();
 
             let filepath = ".\\" + files.uploadedFile[0].filepath;
-            console.log(filepath);
+            console.log("Filepath: " + filepath);
 
             generateTitleFromPdf(filepath).then(function (pdfDetailsAI) {
-                console.log("again");
+                console.log("AI Generated file details:");
                 console.log(pdfDetailsAI);
-                console.log(pdfDetailsAI.partNumber);
+
                 let paddedRevision = pdfDetailsAI.revision.padStart(2, " ");
                 let paddedMonth = pdfDetailsAI.monthAsNumber.padStart(2, "0");
                 let sanitizedTitle = pdfDetailsAI.title.replace(/ /g, "_")
@@ -64,7 +63,7 @@ http.createServer(function (req, res) {
                 paddedMonth + "_" + sanitizedTitle;
 
                 let newFile = form.uploadDir + "/" + newName + ".pdf";
-                console.log(newFile);
+                console.log(filepath + " is being renamed to " + newName);
 
                 fs.rename(filepath, newFile,() => {console.log("Success");});
             }, () => {console.log("error reading file");}
@@ -103,7 +102,7 @@ http.createServer(function (req, res) {
                 res.write("script.js NOT FOUND");
                 res.end();
             } else {
-                res.writeHead(200, { 'Content-Type': 'text/js' });
+                res.writeHead(200, { 'Content-Type': 'text/javascript' });
                 res.write(pgres);
                 res.end();
             }

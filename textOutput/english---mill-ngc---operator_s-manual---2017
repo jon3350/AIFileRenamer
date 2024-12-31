@@ -1,0 +1,1418 @@
+,
+Haas Automation Inc.
+2800 Sturgis Road
+Oxnard, CA 93030-8933
+U.S.A. | HaasCNC.com
+©
+ 2017 Haas Automation, Inc. All Rights Reserved. Copy by Permission Only. Copyright Strictly Enforced.
+Mill Operator’s Manual
+Next Generation Control
+96-8210
+Revision F
+December 2017
+English
+Original Instructions
+ 
+i
+© 2017 Haas Automation, Inc. 
+All rights reserved. No part of this publication ma
+y be reproduced, stored in a retrieval system, or
+transmitted, in any form, or by any means, mech
+anical, electronic, phot
+ocopying, recording, or
+otherwise, without the wr
+itten permission of Haas Automation, Inc.
+ No patent liability is assumed with
+respect to the use of the information contained 
+herein. Moreover, because Haas Automation strives
+constantly to improv
+e its high-quality products, the information 
+contained in this manual is subject to
+change without notice. We have take
+n every precaution in the preparation of this manual; nevertheless,
+Haas Automation assumes no respon
+sibility for errors or omissions,
+ and we assume no liability for
+damages resulting from the use of the info
+rmation contained in this publication. 
+ 
+ii
+This product uses Java Technology from Oracle Co
+rporation and we request that you acknowledge that 
+Oracle owns the Java Trademark and all Java related Trademarks and agree to comply with the 
+trademark guidelines at 
+www.oracle.com/us/legal/third-party-trademarks/index.html
+. 
+Any further distribution of the Java programs (beyond this appliance/machine) is subject to a legally 
+binding End User License Agreement with Oracle. An
+y use of the commercial features for production 
+purposes requires a separate license from Oracle.
+iii
+LIMITED WARRANTY CERTIFICATE
+Haas Automation, Inc. 
+Covering Haas Automation, Inc. CNC Equipment
+Effective September 1, 2010
+Haas Automation Inc. (“Haas” or “Manufactu
+rer”) provides a limited warranty on all new
+mills, turning centers, 
+and rotary machines 
+(collectively, “CNC 
+Machines”) and their
+components (except those listed below und
+er Limits and Exclusions of Warranty)
+(“Components”) that are manufactured by Ha
+as and sold by Haas or its authorized
+distributors as set forth in this Certificate. 
+The warranty set forth in
+ this Certificate is a
+limited warranty, it is 
+the only warranty by Manufacturer
+, and is subject to the terms and
+conditions of this Certificate.
+Limited Warranty Coverage
+Each CNC Machine and its Components (collectively, “Haas Products”) are warranted by
+Manufacturer against defects in material and 
+workmanship. This warranty is provided only
+to an end-user of the CNC Machine (a “Custome
+r”). The period of th
+is limited warranty is
+one (1) year. The warranty period commences on the date the CNC Machine is installed at
+the Customer’s facility. Custom
+er may purchase an extension 
+of the warranty period from
+an authorized Haas distributor (a “Warranty Exte
+nsion”), any time during the first year of
+ownership.
+Repair or Replacement Only
+Manufacturer’s sole li
+ability, and Customer’s exclusive 
+remedy under this warranty, with
+respect to any and all Haas products, shall be limited to repairing or replacing, at the
+discretion of the Manufacturer, the defective Haas product.
+Disclaimer of Warranty
+This warranty is Manufacturer’s sole and ex
+clusive warranty, and is
+ in lieu of all other
+warranties of whatever kind or nature, express 
+or implied, written or oral, including, but not
+limited to, any implied warranty
+ of merchantability, implied 
+warranty of fitness for a
+particular purpose, or other warranty of quality or performance or noninfringement. All such
+other warranties of whatever kind are hereby
+ disclaimed by Manufacturer and waived by
+Customer.
+iv
+Limits and Exclusions of Warranty
+Components subject to wear during normal use 
+and over time, including, but not limited to,
+paint, window finish and condition, light bulbs,
+ seals, wipers, gaskets, chip removal system
+(e.g., augers, chip chutes), belt
+s, filters, door rollers, tool c
+hanger fingers, etc., are excluded
+from this warranty. Manufacturer’s specifie
+d maintenance procedures must be adhered to
+and recorded in order to mainta
+in this warranty. This warran
+ty is void if Manufacturer
+determines that (i) any Haas Product was 
+subjected to mishandling, misuse, abuse,
+neglect, accident, improper installation, 
+improper maintenance, improper storage, or
+improper operation or application, including the 
+use of improper coolants or other fluids, (ii)
+any Haas Product was improperly repaired or serviced by Customer, an unauthorized
+service technician, or other 
+unauthorized person, (iii) Cust
+omer or any person makes or
+attempts to make any modification to an
+y Haas Product without the prior written
+authorization of Manufacturer, and/or 
+(iv) any Haas Product was used for any
+non-commercial use (such as personal or ho
+usehold use). This warranty does not cover
+damage or defect due to an external influenc
+e or matters beyond the reasonable control of
+Manufacturer, including, but not limited to, thef
+t, vandalism, fire, weather condition (such as
+rain, flood, wind, lightning, or earthq
+uake), or acts of war or terrorism.
+Without limiting the generality of any of the 
+exclusions or limitations described in this
+Certificate, this warranty does not include an
+y warranty that any H
+aas Product will meet any
+person’s production specifications or other re
+quirements, or that operation of any Haas
+Product will be uninterrupted or
+ error-free. M
+anufacturer assumes no
+ responsibility with
+respect to the use of any H
+aas Product by any person, an
+d Manufacturer shall not incur
+any liability to any person for an
+y failure in design, production
+, operation, pe
+rformance, or
+otherwise of any Haas Product, other than repair 
+or replacement of same as set forth in the
+warranty above.
+Limitation of Liability and Damages
+Manufacturer will not be liable to Customer
+ or any other person for any compensatory,
+incidental, consequential, puniti
+ve, special, or other damage or
+ claim, whether in an action
+in contract, tort, or other legal or equitable 
+theory, arising out of or related to any Haas
+product, other products or services provided 
+by Manufacturer or an authorized distributor,
+service technician, or other authorized repr
+esentative of Manufacturer (collectively,
+“authorized representative”
+), or the failure of parts or products made by using any Haas
+Product, even if Manufacturer or any autho
+rized representative ha
+s been advised of the
+possibility of such damages, which damage or 
+claim includes, but is not limited to, loss of
+profits, lost data, lost products
+, loss of revenue, loss of us
+e, cost of down time, business
+good will, any damage to equipment, premises, or other property of any person, and any
+damage that may be caused by a malfunction of any Haas product. All such damages and
+claims are disclaimed by Manufacturer and 
+waived by Customer. Manufacturer’s sole
+liability, and Customer’s exclusive reme
+dy, for damages and claims for any cause
+whatsoever shall be limited to repair or repl
+acement, at the discretion of Manufacturer, of
+the defective Haas Product as provided in this warranty. 
+v
+Customer has accepted the limitations and restrict
+ions set forth in this 
+Certificate,
+ including,
+but not limited to, the restrictio
+n on its right to recover damage
+s, as part of its bargain with
+Manufacturer or its Authorized Representative. Customer realizes and acknowledges that
+the price of the Haas Products would be hi
+gher if Manufacturer were required to be
+responsible for damages and claims beyond the scope of this warranty.
+Entire Agreement
+This Certificate supersedes 
+any and all other agreements, promises, representations, or
+warranties, either oral or in writing, betwe
+en the parties or by Manufacturer with respect to
+subject matter of this Certificate, and co
+ntains all of the covenants and agreements
+between the parties or by Manufacturer with 
+respect to such subject matter. Manufacturer
+hereby expressly rejects any other agreements,
+ promises, representations, or warranties,
+either oral or in writing, that are in addition
+ to or inconsistent wit
+h any term or condition of
+this Certificate. No term or
+ condition set forth 
+in this Certificate may be modified or
+amended, unless by a written agreement signed by both Manufacturer and Customer.
+Notwithstanding the fo
+regoing, Manufacturer
+ will honor a Warranty Extension only to the
+extent that it extends the 
+applicable warr
+anty period.
+Transferability
+This warranty is transferable from the original Customer to another party if the CNC
+Machine is sold via private sale before the en
+d of the warranty period, provided that written
+notice thereof is provided to Manufacturer and 
+this warranty is not 
+void at the time of
+transfer. The transferee of this
+ warranty will be subject to a
+ll terms and conditions of this
+Certificate.
+Miscellaneous
+This warranty shall be governed by the laws 
+of the State of Californi
+a without application of
+rules on conflicts of laws. Any 
+and all disputes arising from th
+is warranty shall be resolved
+in a court of competent jurisdiction located in Ventura County, Los Angeles County, or
+Orange County, California. Any term or provis
+ion of this Certificat
+e that is invalid or
+unenforceable in any situation in
+ any jurisdiction shal
+l not affect the valid
+ity or enforceability
+of the remaining terms and provisions hereo
+f, or the validity or
+ enforceability of the
+offending term or provision in any other 
+situation or in any other jurisdiction.
+vi
+Customer Feedback
+If you have concerns or questions regarding 
+this Operator’s Manual, please contact us on
+our website, www.HaasCNC.com
+. Use the “Contact Haas” link and send your comments
+to the Customer Advocate.
+You can find an electronic copy of this m
+anual and other useful information on our website
+in the “Resource Center”. Join Haas owners online and be a part of the greater CNC
+community at these sites:
+The Haas Resource Center: DIY Documentation and Procedures
+diy.haascnc.com
+haasparts.com
+Your Source for Genuine Haas Parts
+www.facebook.com/HaasAutomationInc
+Haas Automation on Facebook
+www.twitter.com/Haas_Automation
+Follow us on Twitter
+www.linkedin.com/company/haas-automation
+Haas Automation on LinkedIn
+www.youtube.com/user/haasautomation
+Product videos and information
+www.flickr.com/photos/haasautomation
+Product photos and information
+vii
+Customer Satisfaction Policy
+Dear Haas Customer,
+Your complete satisfaction
+ and goodwill are of 
+the utmost import
+ance to both Haas
+Automation, Inc. and the Haas distributor (HFO) where you purchased your equipment.
+Normally, your HFO will rapidly resolve any
+ concerns you have
+ about your sales
+transaction or the operation of your equipment.
+However, if your concerns are not resolved 
+to your complete satisfaction, and you have
+discussed your concerns with a member of 
+the HFO’s management, the General Manager,
+or the HFO’s owner directly, please do the following:
+Contact Haas Automation’s Customer Service 
+Advocate at 805-988-6980. So that we may
+resolve your concerns as qu
+ickly as possible, please have the following information
+available when you call:
+•
+Your company name, address, and phone number
+•
+The machine model and serial number
+•
+The HFO name, and the name of your latest contact at the HFO
+•
+The nature of your concern
+If you wish to write Haas Automa
+tion, please use this address: 
+Haas Automation, Inc. U.S.A.
+2800 Sturgis Road
+Oxnard CA 93030
+Att: Customer Satisfaction Manager
+email: customerse
+rvice@HaasCNC.com
+Once you contact the Haas Auto
+mation Customer Service Center
+, we will make every effort
+to work directly with you and your HFO to
+ quickly resolve your concerns. At Haas
+Automation, we know that a good Customer-D
+istributor-Manufa
+cturer relationship will help
+ensure continued success for all concerned.
+International:
+Haas Automation, Europe
+Mercuriusstraat 28, B-1930
+Zaventem, Belgium
+email: customerse
+rvice@HaasCNC.com
+Haas Automation, Asia
+No. 96 Yi Wei Road 67,
+Waigaoqiao FTZ
+Shanghai 200131 P.R.C.
+email: customerse
+rvice@HaasCNC.com
+viii
+ 
+ix
+Declaration of Conformity
+Product: Mill (Vertical and Horizontal)*
+*Including all options factory- or field-insta
+lled by a certified Haas Factory Outlet (HFO)
+Manufactured By:
+Haa
+s Automation, Inc.
+2800 Sturgis Road, Oxnard, CA 93030 
+805-278-1800
+We declare, in sole responsibility, that the 
+above-listed produc
+ts, to which this declaration
+refers, comply with the regulations as outlin
+ed in the CE directive 
+for Machining Centers:
+•
+Machinery Directive 2006/42/EC
+•
+Electromagnetic Compatib
+ility Directive 2014/30/EU
+•
+Additional Standards:
+–
+EN 60204-1:2006/A1:2009
+–
+EN 614-1:2006+A1:2009
+–
+EN 894-1:1997+A1:2008
+–
+CEN 13849-1:2015
+RoHS: COMPLIANT by Exemption per pr
+oducer documentatio
+n. Exempt by:
+a)
+Large scale stationary industrial tool
+b)
+Monitoring and control systems
+c)
+Lead as an alloying element in steel, aluminum, and copper
+Person authorized to co
+mpile technical file:
+Jens Thing
+Address:
+Haas Automation Europe
+Mercuriusstraat 28
+B-1930 Zaventem
+Belgium
+ 
+x
+USA: Haas Automation certifie
+s this machine to be in compliance with the OSHA and ANSI
+design and manufacturing standards listed 
+below. Operation of this machine will be
+compliant with the below-listed standards only 
+as long as the owner and operator continue
+to follow the operation, maintenance, and training requirements of these standards.
+•
+OSHA 1910.212 - General Requirements for All Machines
+•
+ANSI B11.5-1983 (R1
+994) Drilling, Milling, and Boring Machines
+•
+ANSI B11.19-2003 Performance Criteria for Safeguarding
+•
+ANSI B11.23-2002 Safety Requirements for Machining Centers and Automatic
+Numerically Controlled Milling,
+ Drilling, and Boring Machines
+•
+ANSI B11.TR3-2000 Risk Asse
+ssment and Risk Reduction - A Guideline to Estimate,
+Evaluate, and Reduce Risks Associated with Machine Tools
+CANADA: As the original equipment manufacturer, we declare that the listed products
+comply with regulations as outlined in the Pre-Start Health and Safety Reviews Section 7
+of Regulation 851 of the Occupational Health
+ and Safety Act Regulations for Industrial
+Establishments for machine guarding provisions and standards.
+Further, this document satisfies the notice-in-w
+riting provision for exemption from Pre-Start
+inspection for the listed machinery as outlined 
+in the Ontario Health and Safety Guidelines,
+PSR Guidelines dated April 2001. The PSR Guidel
+ines allow that notice
+ in writing from the
+original equipment manufacturer declaring conformity to applicable standards is acceptable
+for the exemption from Pre-Start Health and Safety Review.
+Original Instructions
+ETL LISTED
+CONFORMS TO
+NFPA STD 79
+ANSI/UL STD 508
+UL SUBJECT 2011
+CERTIFIED TO 
+CAN/CSA STD C22.2 NO.73
+All Haas CNC machine tools carry the ETL Listed mark, 
+certifying that they conform to the NFPA 79 Electrical 
+Standard for Industrial Machinery and the Canadian 
+equivalent, CAN/CSA C22.2 No. 73. The ETL Listed and 
+cETL Listed marks are awarded to products that have 
+successfully undergone testing by Intertek Testing 
+Services (ITS), an alternative to Underwriters'  
+Laboratories.
+ C 
+Haas Automation has been assessed for conformance 
+with the provisions set forth by ISO 9001:2008.  Scope of 
+Registration: Design and Manufacture of CNC Machines 
+Tools and Accessories, Sheet Metal Fabrication.  The 
+conditions for maintaining this certificate of registration are 
+set forth in ISA's Registration Policies 5.1.  This 
+registration is granted subject to the organization 
+maintaining compliance to the noted stardard.  The validity 
+of this certificate is dependent upon ongoing surveillance 
+audits.
+ 
+xi
+How to Use This Manual
+To get the maximum benefit of your new Haas
+ machine, read this manual thoroughly and
+refer to it often. The content of this manual is
+ also available on your machine control under
+the HELP function. 
+IMPORTANT:  
+Before you operate the machine, read and understand the Operator’s
+Manual Safety chapter.
+Declaration of Warnings
+Throughout this manual, important statements 
+are set off from the ma
+in text with an icon
+and an associated signal word: “Danger,” “W
+arning,” “Caution,” or 
+“Note.” The icon and
+signal word indicate the severity of the cond
+ition or situation. Be
+ sure to read these
+statements and take special ca
+re to follow the
+instructions.
+Description
+Example
+Danger
+ means that there is a condition or situation 
+that 
+will cause death or severe injury
+ if you do not 
+follow the instructions
+given.
+DANGER:  
+No step. Risk of electrocution, bodily 
+injury, or machine damage. Do not climb or stand 
+on this
+area.
+Warning
+ means that there is a 
+condition or situation 
+that 
+will cause moderate injury
+ if you do not follow 
+the instructionsgiven. 
+WARNING:  
+Never put your hands between the 
+tool changer and the spindle head.
+Caution
+ means that 
+minor injury or machine 
+damage could occur
+ if you do not follow the 
+instructions given. You may also have to start a 
+procedure over if you do not follow the instructions in 
+a cautionstatement.
+CAUTION:  
+Power down the machine before you 
+do maintenance
+tasks.
+Note
+ means that the text gives 
+additional 
+information, clarification, or helpfulhints.
+NOTE:  
+Follow these guidelines if the machine is 
+equipped with the optional extended 
+Z-clearance
+table.
+ 
+xii
+Text Conventions Used in this Manual
+Description
+Text Example
+Code Block
+ text gives program examples.
+G00 G90 G54 X0. Y0.;
+A 
+Control Button Reference
+ gives the name of a 
+control key or button that you are to press. 
+Press 
+[CYCLE START]
+.
+A 
+File Path
+ describes a sequence of file system 
+directories. 
+Service > Documents and Software >...
+A 
+Mode Reference
+ describes a machine mode. 
+MDI 
+A 
+Screen Element
+ describes an object on the 
+machine’s display that
+ you interact with. 
+Select the 
+SYSTEM
+ tab.
+System Output
+ describes text that the machine 
+control displays in response to your actions. 
+PROGRAM END
+User Input
+ describes text that you should enter into 
+the machine control. 
+G04 P1.;
+Variable
+ n indicates a range of non-negative integers 
+from 0 to 9.
+Dnn
+ represents 
+D00
+ through 
+D99
+.
+ 
+xiii
+Contents
+Chapter
+1
+Safety  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 1
+1.1
+General Safety Notes .  .  . 
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  1
+1.1.1
+Summary of Types of Operat
+ion for Haas Automation 
+Machine Tools .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  2
+1.1.2
+Read Before Operating  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  4
+1.1.3
+Machine Environmental Limits.  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .  6
+1.1.4
+Machine Noise Limits  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  7
+1.2
+Unattended Operation.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  7
+1.3
+Setup Mode .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  8
+1.3.1
+Machine Behavior with the Door Open  .  .  .  .  .  .  .  .  .  .  8
+1.3.2
+Robot Cells  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  9
+1.3.3
+Mist Extraction / Enclosure Evacuation  .  .  .  .  .  .  .  .  .  .10
+1.4
+Modifications to the Ma
+chine  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .10
+1.5
+Improper Coolants.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .10
+1.6
+Safety Decals .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .11
+1.6.1
+Decal Symbols Reference.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .12
+1.6.2
+Other Safety Information.  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .16
+1.7
+More Information Onlin
+e.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .16
+Chapter
+2
+Introduction .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  17
+2.1
+Vertical Mill Overview .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .17
+2.2
+Horizontal Mill Overview.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .23
+2.3
+Control Pendant .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .26
+2.3.1
+Pendant Front Panel.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .27
+2.3.2
+Pendant Right Side, Top, and Bottom Panels.  .  .  .  .  .  .28
+2.3.3
+Keyboard.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .29
+2.3.4
+Control Display.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .41
+2.3.5
+Screen Capture  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .62
+2.4
+Tabbed Menu Basic Navigation .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .63
+2.5
+Help .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .64
+2.5.1
+Active Icon Help .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .64
+2.5.2
+Active Window Help .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .64
+2.5.3
+Active Window Commands  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .64
+2.5.4
+Help Index .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .64
+2.6
+More Information Onlin
+e.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .65
+ 
+xiv
+Chapter
+3
+Control Icons .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .67
+3.1
+Control Icon Guide.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .67
+3.2
+More Information Onlin
+e.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .80
+Chapter
+4
+Operation .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .81
+4.1
+Machine Power-On  .  .  .  .  .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .81
+4.2
+Spindle Warm-Up .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .82
+4.3
+Device Manager ([LIST PROGRAM]) .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .82
+4.3.1
+Device Manager Operation  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .83
+4.3.2
+File Display Columns  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .84
+4.3.3
+Create a New Program  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .85
+4.3.4
+Select the Active Program.  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .86
+4.3.5
+Check Mark Selection .  .  .  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .  .86
+4.3.6
+Copy Programs  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .86
+4.3.7
+Edit a Program.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .87
+4.3.8
+File Commands  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .88
+4.4
+Full Machine Backup  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .89
+4.4.1
+Selected Machine Data Backup .  .  .  .  .  .  .  .  .  .  .  .  .  .91
+4.5
+Restoring a Full Machine Backup .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .92
+4.5.1
+Restoring Selected Backups.  .  .  .  .  
+.  .  .  .  .  .  .  .  .  .  .93
+4.6
+Basic Program Search.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .94
+4.7
+Tooling.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .94
+4.7.1
+Tool Holders.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .94
+4.7.2
+Advanced Tool Management Introduction.  .  .  .  .  .  .  .  .95
+4.8
+Tool Changers.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 100
+4.8.1
+Loading the Tool Changer.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 101
+4.8.2
+Umbrella Tool Changer Recovery.  .  .  .  .  .  .  .  .  .  .  . 106
+4.8.3
+SMTC Programming Notes  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 106
+4.8.4
+SMTC Recovery.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 107
+4.8.5
+SMTC Door Switch Panel .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 107
+4.9
+Part Setup .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 108
+4.9.1
+Setting Offsets.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 108
+4.10
+Run-Stop-Jog-Continue .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 111
+4.11
+Graphics Mode  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 112
+4.12
+More Information Onlin
+e.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 114
+Chapter
+5
+Programming.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 115
+5.1
+Create / Select Programs for Editing  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .  .  .  . 115
+5.2
+Program Edit Modes.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 115
+5.2.1
+Basic Program Editing.  .  . 
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 115
+5.2.2
+Manual Data Input (MDI)  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 118
+5.2.3
+Background Edit.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 119
+5.2.4
+Program Editor.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 119
+437
+macros
+1-bit discrete outputs
+.............
+........... 
+218
+g- and m-codes
+...........
+...........
+......... 
+192
+look ahead
+..............
+..............
+......... 
+193
+M30 counters and
+...............
+............... 
+56
+round off
+...............
+..............
+........... 
+192
+variables
+...............
+..............
+........... 
+198
+main spindle display
+.................
+............... 
+62
+manual data input (MDI)
+..............
+........... 
+118
+save as numbered program
+............... 
+118
+material
+fire risk
+...............
+................
+............... 
+7
+M-code relays
+with M-fin
+..............
+..............
+........... 
+351
+M-codes
+................
+.................
+............. 
+345
+coolant commands
+................
+........... 
+135
+program stop
+..............
+...........
+......... 
+134
+spindle commands
+................
+........... 
+134
+media display
+..............
+..............
+............. 
+51
+memory lock
+...............
+..............
+............. 
+28
+mode display
+..............
+..............
+............. 
+42
+N
+Network Connection
+.................
+............. 
+414
+Icons
+...............
+.................
+............. 
+416
+Net Share Setting
+...............
+............. 
+422
+Wired Connection
+...............
+............. 
+418
+Wired Network Settings
+...........
+......... 
+419
+Wireless Connection Setup
+................ 
+419
+new program
+...............
+..............
+............. 
+85
+O
+offset
+tool
+.................
+.................
+............. 
+132
+work
+...............
+.................
+............. 
+132
+offsets
+display
+...............
+................
+............. 
+44
+operating modes
+...................
+..........
+........ 
+42
+operation
+unattended
+..............
+..............
+............. 
+7
+operator position
+...................
+..........
+........ 
+58
+optional stop
+...............
+..............
+........... 
+348
+overrides
+...............
+.................
+............... 
+40
+disabling
+...............
+..............
+............. 
+40
+P
+part setup
+................
+................
+............ 
+108
+offsets
+...............
+................
+............ 
+108
+tool offset
+.............
+..............
+............ 
+110
+work offset
+..............
+...............
+......... 
+109
+position display
+.............
+...............
+.......... 
+58
+positioning
+absolute vs. incremental
+...........
+......... 
+128
+positions
+distance to go
+.................
+..........
+........ 
+58
+machine
+...............
+..............
+............. 
+58
+operator
+...............
+..............
+............. 
+58
+work (G54)
+.............
+...............
+.......... 
+58
+probe
+troubleshooting
+...........
+............
+......... 
+170
+probing
+.................
+.................
+.............. 
+165
+program
+active
+................
+................
+............. 
+86
+basic search
+..............
+............
+.......... 
+94
+duplication
+..............
+...............
+.......... 
+88
+rename
+................
+..............
+............. 
+88
+programming
+background edit
+.................
+.............. 
+119
+basic example
+............
+............
+......... 
+124
+safe startup line
+.................
+.............. 
+126
+subprograms
+..............
+............
+......... 
+148
+R
+r plane
+..............
+..............
+............
+......... 
+147
+Rapid Mode
+................
+..............
+............ 
+414
+remote jog handle (RJH)
+.............
+............ 
+171
+rotary
+axis disable / enable
+.............
+............ 
+181
+configuring new
+.................
+.............. 
+176
+custom configuration
+.............
+............ 
+179
+grid offset
+.............
+..............
+............ 
+180
+tool change offset
+...............
+.............. 
+180
+rotary offset
+tilt center
+..............
+..............
+............ 
+189
+run-stop-jog-continue
+...............
+.............. 
+111
+S
+safe startup line
+.............
+...............
+......... 
+126
+ 438
+safety
+decals
+................
+................
+............. 
+11
+door interlock
+..............
+..............
+.......... 
+5
+during operation
+.................
+................. 
+4
+electrical
+...............
+.................
+............ 
+4
+glass window
+..............
+..............
+.......... 
+6
+introduction
+..............
+..............
+............ 
+1
+keyswitch operation
+.................
+............ 
+8
+maintenance
+.............
+..............
+............ 
+5
+part loading/unloading
+..............
+............ 
+5
+robot cells
+................
+..............
+............ 
+9
+safety decals
+standard layout
+...........
+............
+.......... 
+11
+symbol reference
+................
+............... 
+12
+safety information
+.............
+............
+.......... 
+16
+search
+find / replace
+.................
+..........
+........ 
+122
+second home
+..............
+..............
+............. 
+28
+selection
+multiple blocks
+.................
+............... 
+117
+Setting 28
+...............
+................
+............. 
+243
+setup mode
+................
+.................
+............ 
+8
+keyswitch
+..............
+..............
+............. 
+28
+side-mount tool changer (SMTC)
+door panel
+.............
+..............
+........... 
+107
+extra-large tools
+...............
+............... 
+105
+moving tools
+.................
+..........
+........ 
+104
+recovery
+.............
+..............
+............. 
+107
+zero pocket designation
+............
+........ 
+104
+special G-codes
+engraving
+..............
+..............
+........... 
+147
+mirror image
+.................
+..........
+........ 
+148
+pocket milling
+............
+...........
+........... 
+148
+rotation and scaling
+.............
+............. 
+148
+special symbols
+..............
+..............
+.......... 
+89
+spindle load meter
+.............
+............
+.......... 
+62
+spindle orientation (M19)
+.............
+........... 
+164
+spindle warm-up
+.............
+..............
+.......... 
+82
+subprograms
+.............
+..............
+............. 
+148
+external
+..............
+..............
+............. 
+149
+local
+.................
+................
+............. 
+152
+T
+tabbed menus
+basic navigation
+.................
+............... 
+63
+tapping canned cycles
+.................
+........... 
+146
+text
+find / replace
+..............
+............
+......... 
+122
+selection
+..............
+...............
+........... 
+117
+Through-Spindle Coolant
+...............
+........... 
+38
+drilling cycle and
+................
+.............. 
+146
+M-code
+................
+...............
+........... 
+357
+tilt axis
+center of rotation offset
+.............
+......... 
+189
+timer and counters display
+reset
+................
+................
+............... 
+45
+timers and counters display
+..............
+......... 
+56
+tool center point control
+................
+........... 
+335
+G54 and
+...............
+...............
+........... 
+336
+rotary setup and
+.................
+.............. 
+182
+tool change offset
+rotary
+...............
+................
+.............. 
+180
+tool changer
+...............
+...............
+........... 
+100
+safety
+................
+.................
+........... 
+108
+tool loading
+large / heavy tools
+.................
+........... 
+101
+tool management tables
+save and restore
+................
+.............. 
+100
+tool offset
+...................
+............
+....... 
+110
+, 
+132
+remote jog handle and
+.............
+......... 
+172
+tooling
+pull studs
+..............
+...............
+............ 
+95
+Tnn code
+..............
+...............
+........... 
+133
+tool holder care
+...........
+............
+.......... 
+94
+tool holders
+..............
+..............
+.......... 
+94
+U
+umbrella tool changer
+loading
+...............
+.................
+........... 
+105
+recovery
+...............
+...............
+........... 
+106
+unattended operation
+..................
+.............. 
+7
+user positions
+.............
+...............
+........... 
+429
+W
+work (G54) position
+.............
+............
+......... 
+58
+work offset
+.............
+..............
+......... 
+109
+, 
+132
+macros and
+..............
+..............
+......... 
+214
+remote jog handle and
+.............
+......... 
+175
+workholding
+................
+...............
+........... 
+108
+safety and
+...............
+..............
+............ 
+5

@@ -27,13 +27,20 @@ async function processDirectory(directory)
     console.log(directoryEntries);
     for await (let x of directoryEntries)
     {
-        file = await x.getFile();
-        console.log(file);
+        let file = await x.getFile();
         await sendFile(file);
     }
 }
 
 async function sendFile(file) {
+
+    console.log("File: ", file);
+    console.log("File: ", file.name);
+
+    file = await trimPdf(file);
+
+    console.log("File: ", file.name);
+
     const formData = new FormData();
     formData.append('uploadedFile', file); // Add the file to the form data
 
@@ -51,4 +58,34 @@ async function sendFile(file) {
     } catch (error) {
         console.error(`Error uploading file ${file.name}:`, error);
     }
+}
+
+async function trimPdf(file) {
+    const fileBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFLib.PDFDocument.load(fileBuffer); // Access PDFDocument via pdfLib
+
+    let totalPages = pdfDoc.getPageCount();
+    console.log("Total pages: ", totalPages);
+
+    for(let i = 1; i <= totalPages; i++)
+    {
+        if ((!(i <= 15)) && (!((totalPages - i) < 3)))
+        {
+            console.log("i:", i);
+            pdfDoc.removePage(i);
+            totalPages--;
+            i--;
+        }
+    }
+
+    const trimmedPdfBytes = await pdfDoc.save();
+    const blob = new Blob([trimmedPdfBytes], { type: 'application/pdf' });
+
+    let newFile = new File([blob], file.name, { type: 'application/pdf' });
+
+    console.log(newFile);
+    console.log(pdfDoc.getPageCount());
+
+    // Return a File object
+    return newFile;
 }

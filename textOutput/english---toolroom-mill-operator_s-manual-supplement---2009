@@ -1,0 +1,1162 @@
+1
+96-0041 Rev T
+January 2009
+O
+PERATOR
+’
+S
+ A
+DDENDUM
+2
+96-0041 Rev T
+January 2009
+1.  WARRANTY
+All new HAAS Toolroom Mills are warranted exclusively by the Haas Automation’s 
+(“Manufacturer”) limited warranty against defects in material and workmanship for a period 
+of six (6) months from the date of purchase, which is the date that a machine is installed 
+at the end user. An additional 6-month extension may be purchased from your authorized 
+Haas distributor. See the Warranty section of the Mill Operator’s Manual for further 
+warranty information.
+2. SAFETY
+Read and Follow all safety warnings
+  - Familiarize yourself with the Operator’s 
+Manual Safety chapter. Be aware of the other people around you in the shop; ﬂ
+ ying chips 
+can seriously injure people, who may not be a safe distance away. Always wear safety 
+glasses. Initial cuts/setups should be cut at a slower speed to reduce the possibility of tool 
+or machine damage. As with any open frame mill, chip screens are highly recommended.
+3.  INSTALLATION
+NOTE
+: 
+ 
+ These installation recommendations are to be used in 
+conjunction with those in the Reference Manual. Material 
+supplied here is given speciﬁ cally for the Toolroom Mill.
+E
+LECTRICITY
+ R
+EQUIREMENTS
+IMPORTANT!  REFER TO LOCAL CODE REQUIREMENTS BEFORE WIRING 
+MACHINES.
+ The power source must be grounded
+ Frequency range is 47-66 Hz
+ Line voltage that does not ﬂ uctuate more than +/-5%
+ Voltage imbalance or no more than 2%
+ Harmonic distortion is not to exceed 10% of the total RMS voltage
+  
+ 
+ 
+       
+ 
+Voltage Requirements
+   
+Toolroom Mill
+ 
+ 
+ 
+         208 3PH / 240V 1PH ±10% 
+ 
+Power Supply 
+ 
+ 
+ 
+        40 AMP 
+ 
+ 
+Haas Circuit Breaker 
+ 
+  
+        40 AMP 
+ 
+ 
+ 
+If service run from elec. panel is less than 100’ use: 
+1PH - 8 GA WIRE/3PH - 10 GA WIRE
+If service run from elec. panel is more than 100’ use: 1PH - 6 GA WIRE/3PH - 8 GA WIRE 
+WARNING!
+A separate earth ground wire of the same conductor size as input power is required to be 
+connected to the machine chassis. This ground wire is required for operator safety and 
+proper operation. This ground must be supplied from the main plant ground at the service 
+entrance, and should be routed in the same conduit as input power to the machine. A local 
+cold water pipe, or ground rod adjacent to the machine cannot be used for this purpose.
+Machine input power must be grounded. The machine will not function properly on 
+ungrounded power. 
+The maximum voltage leg-to-leg or leg-to-ground should not exceed 260 volts.
+3
+96-0041 Rev T
+January 2009
+Connecting the Toolroom Mill to Power
+The Toolroom Mill can be powered from either 3 Phase 208 Wye 
+Power (Neutral Grounded) or Single Phase 240V. In either case, 
+a separate ground wire of the same size as the main conductors 
+must be provided in the power cable.
+1. With the main circuit breaker in the OFF position (rotate the 
+shaft that connects to the breaker counterclockwise), hook up the 
+power lines to the terminals on top of the main circuit breaker. 
+Connect the separate ground line to the ground bus to the left of 
+the circuit breaker.
+NOTE
+: 
+For Single Phase operation, only terminals L1 and L3 of the 
+circuit breaker are used.  L2, the center connection, should be 
+left open.
+CAUTION! 
+Make sure the main circuit breaker is in the OFF position 
+BEFORE changing transformer connections.
+2. T5 is a small transformer mounted on the power supply assembly next to the main circuit 
+breaker. This transformer has two input connectors located about two-inches from the 
+transformer that allow it to be connected to either 240V or 200V. If the incoming power is 
+220-250 VRMS, use the 240V connection. If the incoming power is 187-219 VRMS, use the 
+200V connection. Failure to use the correct input connector will result in either overheating 
+of the main contactor or failure to reliably engage the main contactor.
+3. The main power transformer is located at the bottom-right corner of the control cabinet. 
+This transformer supplies Single Phase 115V power to the cabinet. It also has two different 
+input connections located at terminal board TB2. If the incoming power is 187-215 VRMS, 
+connect wire 74 to the 208V position (center). If the incoming power is 216-250 VRMS, 
+connect wire 74 to the 240V position (left).
+4. Turn the main circuit breaker to the ON position (rotate the shaft clockwise). Apply power 
+to the control by pressing the Power-On switch on the control panel. Verify that the Fault 
+Indicator on the 320V Power Supply (located above the main power transformer) displays 
+the number “1”, which signiﬁ es a normal power-up sequence. Next, verify the DC bus 
+voltage on pins 6 & 7 with a voltmeter. The voltage should read approximately 335VDC if 
+powered from 240V, or closer to 290V if powered from 208V. If the voltage is not at least 
+260VDC, call the Service Department.
+5. Turn the main circuit breaker OFF by rotating its shaft counterclockwise. Close the door, 
+lock the latches, and turn the power back on.
+E
+LECTRICAL
+ O
+PERATION
+Fault Display
+The 320V Power Supply has a Fault Display that displays different faults sensed by the 
+power supply. The Fault Display will continue to be illuminated with the fault code until the 
+power to the control cabinet has been turned-off. This is the only way of resetting the power 
+supply. 
+Main
+Circuit
+Breaker
+Ground
+Line
+L1
+L2
+L3
+4
+96-0041 Rev T
+January 2009
+In addition, the supply cycles through the codes “8”, “0”, and “1” during the power-
+up sequence. “8” is displayed when power is ﬁ rst applied to allow veriﬁ cation that all 
+segments of the display are working properly. “0” is next displayed to indicate that the 
+supply has begun charging the output capacitors. This takes approximately 5 seconds. “1” 
+is next displayed to indicate that the capacitors were successfully charged. Unless a fault 
+occurs, the “1” code remains displayed while AC power is applied.
+Fault Code 
+Description 
+ 
+Diagnosis
+4 Over-Temp 
+ 
+Fan 
+Failed
+A 
+Phase A/C 
+ 
+Frequency not 49-61Hz, loss of AC for 3 cycles
+b 
+Regen 
+ 
+Regen Load is shorted
+d 
+Overload/Short 
+Excessive current on DC output - shorted amp
+E 
+Under Voltage 
+AC Input voltage is low
+F 
+Over Voltage  
+Regen Load is open
+L
+EVELING
+The Toolroom Mill is leveled in the same manner as a VF-Series machine. See the 
+Reference Manual for details.
+NOTE:
+ 
+Before any axis movement takes place, remove the shipping 
+bracket from the spindle and table, and remove any wooden 
+crating from the top of the spindle head. Severe damage will 
+occur if machine operation is attempted with the shipping 
+bracket in place. 
+TM-2 C
+HIP
+ P
+AN
+ E
+XTENSIONS
+ 
+1. Fasten the pan extensions to the mill using 1/4-20 x 3/4 BHCS. Note that the pan 
+extension ﬂ ange goes on the inside of the existing panel.
+2. Repeat the same procedure on the other side.
+5
+96-0041 Rev T
+January 2009
+4.  MACHINING PRACTICES
+This section is a general overview of basic machining practices. It is intended to familiarize 
+you with basic setup and operation techniques. Good machining practices extend tool life 
+and in the end can save money.
+Insert Selection
+Although inserts are expendable it does not mean that an operator should be careless 
+in the setup. The following are the most common insert materials used. Each has a 
+description of its characteristics and common usage.
+ 
+High Speed Steel
+ 
+ 
+ Allow for higher rake angles
+ 
+ 
+ Resists chipping
+ 
+ 
+ Resists softening due to high temperatures.
+ Carbide
+ 
+ 
+ Good resistance to high temperatures
+ 
+ 
+ Lower edge strength than high-speed steel
+ 
+ 
+ Different composition of carbide can result in different ﬁ
+ nishes
+ Ceramic
+  
+ 
+Yields 
+good 
+ﬁ
+ nish
+ 
+ 
+ Requires negative rake angle due to low strength
+ 
+ 
+ Requires very rigid setup
+ 
+ 
+ Requires high horsepower 
+ Diamond
+ 
+ 
+ Four times harder than carbide
+ 
+ 
+ Can retain their cutting edge for almost the length of the tool life
+ 
+ 
+ Excellent stability for close tolerance work
+  
+ 
+Excellent 
+ﬁ
+ nish quality
+NOTE:
+ 
+Remember to use the highest quality tooling designed for CNC 
+machines to achieve the best cutting condition possible.
+Tool Wear
+Tool life is dependant upon the following criteria:
+ 
+ Cutting feedrate
+ 
+ Tool and workpiece material
+ 
+ How much material is being removed
+ 
+ Proper workholding device
+ 
+ Use of coolants
+ 
+ Use of correct SFPM (RPM) for tool and material
+Tools are subject to gradual wear from the following elements:
+ Abrasion 
+(Friction and rubbing removes material from the cutter.) Caused by:
+ 
+ 
+ Friction on the outside of the cutter as it passes through the material.
+ Adhesion 
+High pressure/temperatures weld small chip particles to cutter. Caused by:
+ 
+ 
+ Low cutting speed
+ 
+ 
+ High feed rate
+ 
+ 
+ Negative cutting geometry
+ 
+ 
+ ‘Sticky’ materials such as some stainless steels and pure aluminum
+ 
+ 
+ Lack of coolants       
+6
+96-0041 Rev T
+January 2009
+ Chipping 
+The cutting edge is broken off instead of being worn away. Caused by:
+ 
+ 
+ Excessive feed rate
+ 
+ 
+ Interrupted cut
+ 
+ 
+ Insert geometry too weak
+  
+ 
+Chatter
+ Cratering 
+Characterized by a smooth depression on the face of the insert. Caused by:
+ 
+ 
+ Excessive cutting speed
+ 
+ 
+ Ineffective use of coolant
+  
+ 
+Friction
+ 
+ 
+ Normal wear
+ Oxidation
+ 
+ 
+ Occurs during very high cutting temperatures
+ 
+ 
+ Weakens tool tips
+ Chemical 
+wear:
+  Cutter/workpiece reaction begins to corrode insert (corrosion)
+Coolant
+There are a number of reasons why coolant is used in the machining process; it is used 
+to dissipate heat generated during machining, reduces cutter friction, and promotes chip 
+clearance. It also allows for high speed machining and increases tool life.
+Coolant is not recommended when machining cast iron or steel, or when using carbide 
+cutters. Carbide cutters can withstand high temperatures but not thermal shock of coolant.
+Cutting ﬂ uids are best suited for soft materials such as aluminum alloys and brass.
+A good ﬂ ow of cutting ﬂ uid should be directed to both sides of cutter whenever possible.
+These are the most common types of cutting ﬂ
+ uids:
+ Emulsion
+ (water combined with mineral oils and additives)
+ 
+ 
+ Used for light to moderate machining
+ Cutting 
+oils
+ (grease or solid additives)
+ 
+ 
+ Limited to slow speed and low feed conditions due to ﬂ
+ ammability
+ 
+ 
+ Expensive to use
+ Chemical
+ or 
+semi-chemical ﬂ
+ uids
+ (synthetic)
+ 
+ 
+ Contain no petroleum oils
+ 
+ 
+ Used for more difﬁ cult machining/grinding operations
+Workpiece
+The more you know about the workpiece, the better you can control the machining 
+process. As a general rule ask these questions:
+ 
+ What is the type of metal (alloy or steel)
+ 
+ Has the part undergone any special process, i.e. case hardening, treated with  
+ 
+ 
+additives or heat treated, etc.?
+Feed Rate
+Feed rate is determined by the required surface ﬁ nish and cutting force. Expressed in:
+ 
+ Inches or millimeters per minute
+ 
+ Inches or millimeters per revolution
+ 
+ Inches per tooth
+Minimum chip thickness (chip load) is determined by the cutting force.
+Maximum chip thickness (chip load) is determined by machine power and tool design.
+7
+96-0041 Rev T
+January 2009
+Spindle Speed
+RPM = speed at which the tooling is turning. The mill can be commanded in either 
+clockwise (CW) or counterclockwise (CCW) direction. The type of application or style of tool 
+will usually dictate the spindle direction.
+Depth of Cut
+The distance the cutter penetrates the workpiece, also referred to as chip load. This is 
+determined by the following factors:
+ 
+ Rigidity of the cutter and machine
+ 
+ Machine capabilities
+ 
+ Spindle horsepower
+Machine Productivity
+Use the load meter as an indicator of how the machine is cutting. Speeds and feeds 
+should be adjusted after the initial cut. The initial cut will give an instant read-out of the 
+performance of the machine. If adjustment are necessary, they should be made in 10% 
+increments. Pay close attention to:
+ 
+ Chip formation and color
+ 
+ Chip load
+ 
+ Monitor part and ﬁ xture during the cut
+ 
+ Listen for any unusual noises
+Surface Finish
+A good ﬁ nish depends on a number of variables. The following are a number of items to 
+check to achieve a good ﬁ
+ nish:
+  
+Good 
+ﬁ nish results in slower feeds and higher speeds
+ 
+ Face milling produces the best ﬁ
+ nish
+ 
+ Increasing the number of cutters (inserts) allow for a better ﬁ
+ nish
+ 
+ Cuts should always be in the same direction
+ 
+ Lighter depth of cuts will produce a better ﬁ
+ nish
+ 
+ Coolants use can also affect part ﬁ
+ nish
+Accuracy
+Machine accuracy can be affected by a number of variables, such as:
+ 
+Is the machine properly warmed up?
+ 
+Holes should be center drilled ﬁ
+ rst
+ 
+Check the condition of the tooling
+Cutting Tool Descriptions
+Drill
+ Used to create a cylindrical hole in a work piece. Drilled holes can be “through holes” 
+or “blind holes”. A “blind hole” is not cut entirely through a work piece.
+Center drill
+ A small drill with a pilot point. It is used to create a small hole with tapered 
+walls. When a hole’s location must be held to a close tolerance, use a center drill ﬁ
+ rst and 
+then use a regular drill to ﬁ nish the hole. The tapered walls of the center-drilled hole will 
+keep the regular drill straight when it begins to drill into the work piece.
+Reamer
+ Designed to remove a small amount of material from a drilled hole. The reamer 
+can hold very close tolerance on the diameter of a hole, and give a superior surface ﬁ
+ nish. 
+The hole 
+must be
+ drilled ﬁ rst, leaving .005 to .015 of an inch stock on the walls of the hole 
+for the reamer to remove.
+8
+96-0041 Rev T
+January 2009
+Tap
+ Used to create screw threads inside of a drilled hole. NOTE: Care must be taken 
+when using a milling machine to perform a tapping operation. For example, the spindle 
+speed and feed must be synchronized.
+End Mill 
+Shaped similar to a drill, but with a ﬂ at bottom (end). It is used primarily to cut 
+with the side of the tool, to contour the shape of a work piece.
+Bull End Mill
+ A bull end mill is the same as a regular end mill except that there is a radius 
+on the corner where the side meets the bottom. This radius can be up to ½ of the tool’s 
+diameter.
+Ball End Mill 
+A ball end mill is a bull end mill where the corner radius is exactly ½ the 
+tool’s diameter. This gives the tool a spherical shape at the end. It can be used to cut with 
+the side of the tool like an end mill.
+Work Holding
+Work holding is one of the most important elements of setting up any machine tool. Work 
+holding is the method of clamping the work piece to the machine. The work piece must 
+always be held securely before any cutting can take place. Three basic types of work 
+holding are used in milling operations. They are: a mill vise, clamps, and a chuck. The type 
+used is dependant upon how large the cutting pressure on the workpiece is going to be. 
+The maximum holding pressure of a manual clamp is determined by the strength of the 
+operator. Large work holding forces require a pneumatic or hydraulic ﬁ
+ xture.
+Fixtures should be kept close to the center of the table in order to maintain a rigid setup. If 
+placed at the ends of the table, harmonic vibrations could occur.
+Before placing any type of work holding on your machine table, great care must be taken 
+to be sure that the table is clean and free of chips and other debris. The work holding 
+equipment also must be clean, free of debris, and have no burrs or dings that may cause 
+instability or damage the table. If you plan to leave your work holding on the table for 
+any length of time, a light coat of rust-preventative oil will help keep your table and work 
+holding free of rust and corrosion.
+The most common method of holding a work piece for machining is a mill vise. The vise is 
+attached to the mill table using tee nuts and bolts. The tee nuts slide into the tee slots in 
+the mill table and the bolts clamp the vise in position. Two bolts on either side of the vise 
+hold it in place. For precision work, the vise must be set so that the clamping surfaces are 
+parallel to the X or Y-axis of machine travel. This is done using an indicator.
+To indicate a vise parallel to a machine axis, you will need an indicator and a magnetic 
+base to hold it. Place the magnetic base anywhere on the bottom of the Z-axis head or 
+the spindle housing. Jog the machine axis to bring the indicator tip to the clamping surface 
+you want to indicate. Set the tip of the indicator so it begins to register on the indicator 
+dial. Use the jog handle to move the axis you want the clamping surface to be parallel to 
+and determine which direction the vise needs to be moved to become parallel. If the right 
+side of the vise needs to be moved toward the back of the machine, tighten the bolt on the 
+left side of the vise to be snug and leave the bolt on the right side of the vise loose. With 
+a dead-blow Mallet, tap the vise until the clamping surface is parallel with the machine 
+axis. Check the result by jogging the axis back and fourth. You may need to do this several 
+times. When the vise is parallel, tighten all the bolts and check the set-up again. Adjust if 
+necessary.
+9
+96-0041 Rev T
+January 2009
+Another common type of work holding on a milling machine is clamps. If you have an 
+odd shaped work piece or a large one that does not ﬁ t into a mill vise, you can clamp it 
+directly to the mill table or ﬁ xture plate using clamps. Clamps are usually a bar type with 
+an oval slot cut through the bar for a bolt and a tapped hole in the bar for a jackscrew. The 
+jackscrew is set to be slightly longer than your work piece is tall. A small shim made of soft 
+material .05” minimum thickness should be placed between the jackscrew and the machine 
+table to prevent the screw from damaging the table when the clamp is tightened.
+Set the clamp on top of the work piece and the jackscrew and shim on the table. Place 
+a bolt through the slot in the clamp and screw it into a tee nut in the table’s tee slot and 
+tighten the bolt to increase the clamping pressure. A series of clamps around your part 
+should hold it in place during machining.
+If you need to machine completely through the part, you will need to get the work piece off 
+of the table. In this case, place blocks between your work piece and the table at the same 
+locations where your clamps are. The blocks need to be directly under the clamps and all 
+the blocks need to be the same height.
+Another method of getting your work piece up off the table is to make a ﬁ
+ xture plate. The 
+ﬁ xture plate can be bolted to the machine table using tee nuts and bolts. Drill and tap holes 
+where the clamps need to be. Clamp your part to the ﬁ xture plate as described above.
+A third method of work holding is for round, cylindrical work pieces. A chuck with movable 
+clamping jaws can be mounted to the machine table. The chuck works like the small chucks 
+on a drill press or a drill motor. A chuck key is used to turn a screw in the side of the chuck, 
+which moves all the clamping jaws simultaneously to clamp on a round work piece.
+For information on other types of work holding or more information on the types discussed 
+here, contact your local distributor of industrial supplies.
+5.  OPERATION
+S
+AFETY
+ S
+WITCH
+The TM-1 and TM-2 are equipped with a hand held safety switch. The button 
+must
+ be 
+pressed any time automatic machining is taking place. Releasing the switch causes the 
+spindle and axes motion to stop. In order to resume automatic machining, the button and 
+Cycle Start must be pressed (it is not necessary to hold Cycle Start down). The TM-1P 
+is not equipped with the safety switch as the machine is fully enclosed. However, all axis 
+motion stops and the spindle slows if the enclosure doors are opened during operation. 
+P
+OWER
+ U
+P
+The mill is powered up by pressing the “Power On” button. Press “Power Up / Restart” and 
+the mill will automatically ﬁ
+ nd home.
+I
+NTRODUCTION
+The Haas Toolroom Mills are supplied with the Intuitive Programming System (IPS). This 
+is displayed once the mill is powered up and homed. This screen shows the X, Y and 
+Z position of the mill as well as the spindle speed. This programming system helps the 
+operator set up operations such as setting tool and work offsets, drilling and tapping cycles, 
+circular and rectangular pocket milling, without knowledge of G-code programming.
+10
+96-0041 Rev T
+January 2009
+The control will prompt for basic machining information tool type, coordinates, feedrate, 
+spindle speed, depth of cut, etc. Once all information is entered, the Toolroom mill 
+performs the desired operation.
+IPS Navigation
+To navigate through the menus of the Intuitive Programming System, use the left and right 
+arrow keys. To select the menu press Write/Enter. Some menus have sub-menus, which 
+again use the left and right arrow keys and Enter to select a sub-menu. Use the arrow 
+keys to navigate through the variables. Key in a variable using the number pad and press 
+Write/Enter. To exit the menu press Cancel. Each of the variables has help text, which is 
+displayed once the variable is selected.
+To change to full CNC mode press any of the Display keys, except Offset. A complete list 
+of G-Codes is described in the Operator’s manual and includes examples to demonstrate 
+the use of the G-codes. Press “Handle Jog” to return to the Toolroom Mill menus.
+A program entered through Toolroom Mill screens is also accessible in MDI (full CNC).
+IPS R
+ECORDER
+The IPS recorder provides a simple method to place G-code generated by IPS into new or 
+existing programs.
+NOTE: 
+The screenshots shown here are examples of mill screens; 
+however, the recorder works the same way on lathes.  
+O
+PERATION
+1. To access IPS, press MDI/DNC, then PROGRM/CONVRS. Refer to your Intuitive 
+Programming System Operator Manual (ES0610 Mill, ES0609 Lathe) for more information 
+on using IPS. 
+2. When the recorder is available, a message appears in red in the lower right corner: 
+MANUAL
+SETUP
+FACE
+DRILL
+POCKETMILLING
+ENGRAVING
+VQC
+CENTERDRILL
+CENTERDEPTH
+CENTERPECK
+DRILLTOOL
+DRILLDEPTH
+DRILLPECK
+TAPTOOL
+TAPDEPTH
+0
+00
+0.0000
+in
+0.0000
+in
+0.0000
+in
+0.0000
+in
+0.0000
+in
+WRKZEROOFST
+RPLANE
+NUMOFHOLES
+XCENTERPT
+YCENTERPT
+54
+DIAMETER
+ANGLE
+CENTERHOLE
+0.0000
+in
+0.0000
+in
+0.0000
+in
+0.000
+deg
+0.2000
+in
+00
+0
+BOLTCIRCLE
+BOLTLINE
+SINGLEHOLE
+Press<CYCLESTART>
+toruninMDIor<F4>
+torecordoutputtoa
+program.
+MULTIPLEHOLES
+11
+96-0041 Rev T
+January 2009
+3. Press F4 to access the IPS recorder menu. Choose menu option 1 or 2 to continue, or 
+option 3 to cancel and return to IPS. F4 can also be used to return to IPS from any point 
+within IPS recorder. 
+IPS Recorder Menu
+Menu Option 1: Select / Create Program
+Select this menu option to choose an existing program in memory or to create a new pro-
+gram into which the G-code will be inserted. 
+1. To create a new program, input the letter ‘O’ followed by the desired program number 
+and press the WRITE key. The new program is created, selected, and displayed. Press the 
+WRITE key once more to insert the IPS G-code into the new program. 
+2. To select an existing program, enter an existing program number using the O format 
+(Onnnnn), then press the WRITE key to select and open the program. To choose from a 
+list of existing programs, press the WRITE key without input. Use the cursor arrow keys to 
+choose a program and press WRITE to open it. 
+MANUAL
+SETUP
+FACE
+DRILL
+POCKETMILLING
+ENGRAVING
+VQC
+CENTERDRILL
+CENTERDEPTH
+CENTERPECK
+DRILLTOOL
+DRILLDEPTH
+DRILLPECK
+TAPTOOL
+TAPDEPTH
+0
+00
+0.0000
+in
+0.0000
+in
+0.0000
+in
+0.0000
+in
+0.0000
+in
+WRKZEROOFST
+RPLANE
+NUMOFHOLES
+XCENTERPT
+YCENTERPT
+54
+DIAMETER
+ANGLE
+CENTERHOLE
+0.0000
+in
+0.0000
+in
+0.0000
+in
+0.000
+deg
+0.2000
+in
+00
+0
+BOLTCIRCLE
+BOLTLINE
+SINGLEHOLE
+Press<CYCLESTART>
+toruninMDIor<F4>
+torecordoutputtoa
+program.
+Select/CreateProgram
+F4
+CANCEL
+O00000
+(PROGRAMA)
+O00001
+(PROGRAMB)
+O00002
+(PROGRAMC)
+O00003
+(PROGRAMD)
+O00004
+(PROGRAME)
+O00005
+(PROGRAMF)
+O00006
+(PROGRAMG)
+*
+Chooseaprogrambyusingthecursor
+keysandpressWRITEtoselect.
+or
+Entera‘O’followedbyanewprogram
+numberandpressWRITEtocreate.
+MULTIPLEHOLES
+3. Using the arrow keys, move the cursor to the desired insertion point for the new code. 
+Press WRITE to insert the code. 
+12
+96-0041 Rev T
+January 2009
+Menu Option 2: Output to Current Program
+1. Select this option to open the currently selected program in memory. 
+2. Use the arrow keys to move the cursor to the desired insertion point for the new code. 
+Press WRITE to insert the code. 
+ C 
+HIP
+ G
+UARD
+ O
+PTION
+The height of the chip guard is adjustable. This may be helpful to gain additional 
+clearance from the operator pendant. See Haas document ES0607 for height adjustment 
+instructions. 
+6.  MAINTENANCE
+The linear guide trucks are ﬁ lled with grease at the factory. Under infrequent or light duty 
+use the factory lube is sufﬁ cient for several months. It is important that the axes are cycled 
+to their full travel daily to coat the linear guides with grease in order to protect the surfaces. 
+More severe use, such as cutting absorbent materials (such as wood), or excessive 
+coolant use (which washes the linear guides), will require weekly greasing - Two strokes 
+of the supplied grease gun is sufﬁ cient. Do not over grease, as the excessive pressure of 
+over-greasing or using a pneumatic or an electrical grease gun is harmful to the seals. It is 
+not necessary to see grease squeezing out of the seals.
+Grease type: General-purpose lithium
+6
+Z-Axis
+Ballnut
+Z-Axis
+Linear
+Guide
+6
+5
+4
+3
+X-Axis
+Ballnut
+Y-Axis
+Ballnut
+Y-Axis
+Linear
+Guide
+X-Axis
+Linear
+Guide
+TM-1 pictured. Grease ﬁ
+ tting locations are identical for TM-2 and TM-1P.
+Also check the Maintenance chapter of the Operator’s manual for additional 
+maintenance issues.
+Note that the Toolroom Mill does not have a gearbox or a TSC system; disregard these 
+maintenance sections.
+13
+96-0041 Rev R
+September 2008
+Corriendo una parte 
+       
+Carge o monte una parte, dirijase a la modalidad de Recorder/Player o Grabacion/
+Reproduccion, ilumine “Play” y presione Enter, lo anterior iniciara el reproductor o player. 
+El presionar el boton de Cycle Start iniciara el proceso de maquinado que fue grabado. El 
+reproductor iniciara en la linea ilumunada de la ﬁ
+ la. 
+Advertencia: La fresadora iniciara 
+una vez que se presione el boton de Cycle Start. 
+Las operaciones consecutivas se 
+ejecutaran, si se desea, pero se debe presionar el boton de Cycle Start para que cada 
+una de las operaciones pueda continuar. 
+Advertencia:
+ El operador debe cambiar las 
+herramientas, en caso se que sea requerido, antes de presionar Cycle Start para la 
+operacion siguiente. 
+Las caracteristicas del programa pueden ser veriﬁ cadas al abrir el menu de Recorder/
+Player, iluminar “Play”, y presionar “Enter”. Ingrese a la modalidad de MDI, luego presione 
+la tecla de “Graphics”. La pantalla de graﬁ cos o “Graphics” le permitira al operador 
+ver cada operacion antes del cortado en vivo.  
+ 
+ 
+ 
+ 
+Desde la modalidad de MDI, tambien es posible crear un programa nuevo de codigod-G 
+en la memoria. Lo anterior se hace al colocar el cursor en la linea superior de su programa, 
+anotar Onnnnnn (la letra “O” seguida por el numero de programa), luego presionar la tecla 
+“Alter”. Al realizar lo anterior se crea un programa nuevo en la memoria lo cual es muy util 
+para la edicion, para guardarlo como repuesto etc.
+Edicion de los procesos
+ 
+        
+Usted puede remover procesos al borrarlos uno a la vez al iluminar el rotulo “Delete One” 
+y presionar Enter o tambien puede borrar toda la lista al iluminar “Delete All” y presionar 
+“Enter”. Utilize las teclas de ﬂ echa para trasladarse a travez de la lista.  
+ 
+Los otros botones de edicion, tales como Skip Start, Skip End, Back One and Forward 
+One, pueden ser usados para iniciar el programa de parte en un punto especiﬁ
+ co del 
+mismo. El operador puede agregar operaciones en cualquier momento al presionar la tecla 
+F4 (para ingresar a la modalidad de Grabacion/Reproduccion y ejecutar una operacion 
+nueva).
+6. MANTENIMIENTO
+La maquina Tool Room Mill debe ser lubricada manualmente. Existen tres puntos de 
+lubricacion localizados en el  Tool Room mill (vea la siguientes ﬁ guras). Para asegurar una 
+lubricacion adecuada, los ejes X, Y y Z deben ser ciclados diariamente y lubricados sem-
+analmente usando grasa de litio para uso general.
+Lubríque hasta que visualmente observe que la grasa sale de la tuerca de bola (ballnuts) y 
+de los rieles de las guias lineares.
+ 
+ 
+ 
+12
+96-0041 Rev R
+September 2008
+Record -
+ Comienza el grabado de las funciones y la informacion anotada. 
+Delete All -
+ Borra todos los procesos grabados. 
+ 
+ 
+ 
+Delete one -
+ Borra un solo proceso colado. Note que solamente borra el ultimo proceso 
+dentro de la lista de reproduccion. Si algun proceso no es el ultimo, entonces se tendra 
+que borrar todos los procesos que ocurren despues del que se desea hasta llegar al 
+mismo.El presionar la tecla “Delete” tambien borrara el ultimo proceso.  
+ 
+Skip Start 
+- Regresa el programa hasta el primer proceso.El presionar la tecla “Home” 
+tambien regresara hasta el primer proceso de la lista. 
+ 
+ 
+Skip End -
+ Adelanta el programa hasta el ultimo proceso. El presionar la tecla “End” 
+tambien adelantara hasta el ultimo proceso de la lista. 
+ 
+ 
+Back one
+ - Se mueve hacia traz a travez del proceso. El presionar la tecla de ﬂ
+ echa hacia 
+arriba tiene el mismo efecto. 
+Forward one
+ - Se mueve hacia delante a travez del proceso. El presionar la tecla de 
+ﬂ echa hacia bajo tiene el mismo efecto.
+Operacion 
+          
+Ingrese a las pantallas de Tool Room Mill al presionar”Handle Jog”. Utilize las teclas ﬂ
+ echa 
+de izquierda y derecha para iluninar/seleccionar el tab de “System” y presione Enter. Use 
+las teclas de ﬂ echa hacia izquierda y derecha para iluminar “Recorder” y presione Enter.  
+Ademas, la modalidad de Grabacion o Recorder puede ser accesible rapidamente al 
+presionar la tecla F4 desde cualquier pantalla de Tool Room Mill. F4 ciclara la modalidad 
+de grabacion, es decir, la apagara y encendera. 
+Creando un Programa para Partes. 
+ 
+ 
+ 
+ 
+ 
+Para desarrollar un programa para partes, primero ﬁ je el grabador/reproductor en 
+“Record”, salga de la modalidad de System e ingrese a la modalidad para el primer 
+proceso. Note que mientras se encuentre en la modalidad de grabacion o “Record”, 
+en la parte superior izquierda de la pantalla se mostrara el rotulo rojo centellante con 
+“Recording”. Fije el proceso de maquinado, anote los valores y presione “Cycle Start”. La 
+Tool Room Mill correra el programa y cortara la primera caracteristica de la parte. Una vez 
+terminado, repita los pasos previos para las caracteristicas restantes de su parte. Note 
+que una vez que presione “Cycle Start”, la operacion sera grabada aunque la operacion 
+no 
+haya 
+sido 
+completada. 
+        
+Una vez que los procesos de maquinado hayan sido anotados, regrese a la modalidad de 
+Recorder/Player o Grabacion/Reproduccion (o presione F4 para ingresar rapidamente), 
+ilumine el rotulo “Stop” y presione Enter (o presione F4), lo anterior detendra la sesion de 
+grabado.
+Usted notara que ahora existe una lista de procesos en la ventana de grabacion. 
+Estos pueden ser editados desde esta pagina mediante el uso de los otros botones de 
+Grabacion/Reproduccion. Una forma alternativa de edicion de las operaciones es el 
+ejecutar la operacion, luego entrar a la modalidad de MDI. MDI revelara el codigo de 
+maquinado el cual puede ser editado desde hay.
+NOTA: 
+ 
+Si la maquina se encuentra equipada con cambiador de her-
+ramientas, entonces la maquina cambiara automaticamente 
+las herramientas como fuera necesario por el programa. 
+11
+96-0041 Rev R
+September 2008
+I
+NTRODUCCION
+Las maquinas fresadoras Tool Room Mill se encuentran provistas con el Sistema de 
+Programacion Intuitiva o “Intuitive Programming System” (IPS). Este sistema se muetra 
+en la pantalla una vez que la maquina es encendida y se haya referenciado en el punto 
+base o Home. La pantalla mostrara las posiciones X,Y y Z de la fresadora a la vez que 
+la velocidad del Husillo. Este sistema de programacion le ayuda al operador en las 
+operaciones de montaje tales como el ﬁ jado de herramientas y los desplazamientos de 
+trabajo o work offsets, en los ciclos de  taladrado y roscado, en el fresado de cavidades 
+circulares y rectangulares, todo esto sin que el usuario tenga conocimiento del programado 
+de codigos-G.  
+El controlador cuestionara al usuario sobre informacion basica de maquinado tal como el 
+tipo de herramienta, coordenadas, velocidad de avance, velocidad del husillo, profundidad 
+de corte, etc. Una vez que la informacion haya sido anotada, entonces la maquina realizará 
+la operación deseada.
+Navegacion del sistema IPS
+ 
+ 
+       
+Para navegar a travez de los diferentes menus del Sistema de Programacion Intuitiva, el 
+usuario debe utilizar las teclas de ﬂ echa de Izquierda/Derecha. Para seleccionar el menu 
+deseado presione la tecla Write/Enter. Algunos menus contienen sub-menus, en los cuales 
+tambien se utiliza las teclas de ﬂ echa de Izquierda/Derecha y Enter para seleccionar el 
+sub-menu deseado. Utilize las teclas de ﬂ echa para navegar a travez de las variables. 
+Anote una variable al usar el teclado numerico y presione Write/Enter. Para salir del menu, 
+presione Cancel. Cada una de las variables tiene un texto de ayuda el cual se muestra una 
+vez que la variable haya sido seleccionada. 
+Para cambiar a la modalidad de CNC completa, presione cualquiera de las teclas de 
+pantalla o Display, excepto Offset. Una lista completa de codigos-G es descrita en el 
+Manual del Operador e incluye ejemplos para demostrar el uso de los codigos-G. Presione 
+“handle Jog” para regresar a los menus Tool Room Mill.
+Un programa que haya sido anotado a traves de las pantallas de Tool Room Mill tambien 
+puede ser accesible en la modalidad de MDI (CNC completo). 
+ G 
+RABADOR
+ T
+OOL
+ R
+OOM
+ M
+ILL
+Introduccion 
+        
+La funcion de grabacion se encuentra dentro de la Modalidad de Sistema o “System 
+Mode”. El grabador/reproductor se usa para crear programas para partes de caracteristicas 
+miltiples mediante la combinacion de programas de partes que utilizan programado 
+automatico de partes de caracteristica unica.
+La pantalla de grabacion tiene un numero de comandos que se pueden iluminar/
+seleccionar mediante el uso de las teclas de ﬂ echa de izquierda y derecha, el operador 
+tambien puede tresladarse a traves de los comandos usando las teclas de ﬂ
+ echa hacia 
+arriba/abajo.         
+Los 
+comandos 
+son: 
+        
+Stop -
+ 
+Detiene 
+el 
+grabado 
+      
+Play - 
+Comienza la reproduccion, comenzando con el proceso iluminado. La fresadora no 
+comenzara hasta que se presione el boton de Cycle Start. 
+ 
+10
+96-0041 Rev R
+September 2008
+Otro tipo comun de sostenedor en las máquinas fresadoras son las tenazas. Si se esta 
+trabajando con una pieza de trabajo de ﬁ gura inusual o con una pieza que no quepa en 
+una prensa, usted la puede prensar directamente en la mesa o la montura mediante el 
+uso de tenazas (Clamps). Las tenazas son usualmente del tipo de barra con una ranura 
+oval cortada en la barra para ser apretada con un tornillo y un oriﬁ cio roscado para montar 
+un tornillo de banco (jackscrew)  El tornillo de banco esta ﬁ jado de cierta manera que 
+sobresale ligeramente la parte en que se esta trabajando. Un shim pequeño de material 
+suave con un grosor minimo de 0.05” debe ser montado entre el tornillo de banco y la 
+mesa de la máquina, de esta manera prevenir algun daño que se pueda causar a la mesa 
+cuando se apriete el tornillo. Cóloque las tenasas encima de la pieza y el tornillo de banco 
+en la mesa. Coloque un tornillo en la ranura del tornillo, atornillelo en una tuerca T dentro 
+de las ranuras T de la mesa y aprietelo para aumettar la presion de prensado en la pieza. 
+Se debe sumar una serie de tenazas alrededor de la parte cuando se maquine la pieza. 
+Si es necesario máquinar toda la parte, esta debe moverse de la mesa. En casos como 
+este, coloque bloques entre la mesa y la pieza en los mismos lugares donde se colocaron 
+las tenazas. Los bloques necesitan estar directamente debajo de las tenazas y todos los 
+bloques deben ser de la misma altura.
+Otro metodo para mantener la pieza de trabajo encima de la mesa es hacer un plato 
+montura (ﬁ xture plate). La montura puede ser atornillada a la máquina mediante el uso 
+de tornillos y tuercas T. Haga oriﬁ cios con rosca en los lugares donde necesita colocar 
+las tenazas y coloque la pieza en la montura de la misma manera que se describio 
+anteriormente.
+El tercer metodo de sostener las piezas de trabajo es para piezas de trabajo redondas 
+y cilindricas. Un chuck con quijadas removibles puede ser montada directamente en la 
+mesa. El chuck funciona de la misma manera que los chucks o quijadas de los taladros 
+manuales. Se utiliza una llave de chuck para girar un tornillo en el lado del chuck, el cual 
+mueve las quijadas simultaneamente para prensar la pieza de trabajo redonda. 
+Para mas información sobre otros tipos de sostenedores o para mas información sobre 
+los tipos que se describieron en esta seccion, consulte su distribuidor local de articulos 
+industriales.
+5.  OPERACION
+INTERRUPTOR
+ -
+SWITCH
+- 
+DE
+ 
+SEGURIDAD
+La maquina  tool room mill esta equipada con con un switch de seguridad manual. El 
+boton del switch 
+debe
+ ser presionado cada vez que se este realizando un maquinado 
+automatico. Al soltar el boton del switch, este causará que el husillo deje de girar y que se 
+detenga cualquier movimiento de los ejes. Para poder continuar el maquinado automatico, 
+el boton del switch y la tecla Cycle Start deben ser presionadas (no es necesario 
+mantener el boton de Cycle Start presionado todo el tiempo).
+E
+NCENDIDO
+Esta fresadora puede ser encendida al presionar el boton de “Power On”. Presione la 
+tecla de “Power Up/ Restart” y la fresadoraencontrara automaticamente el punto base o 
+home. 
+2
+96-0041 Rev R
+September 2008
+1. GARANTIA
+Todas las Tool Room Mill HAAS nuevas se encuentran garantizadas exclusivamente bajo la garantia limitada 
+de Haas Automation (“El Fabricante”)  contra defectos de material y mano de obra por un periodo de seis (6) 
+meses a partir de la fecha de compra, la cual es aquella  en la que una máquina en particular es instalada 
+en el lugar del usuario 
+ﬁ
+ nal. Una extencion adicional de 6-meses  de garantia puede ser comprada en su 
+distribuidor autorizado Haas.
+2. INTRODUCCION
+La máquina Tool Room Mill incluye caracteristicas inclinadas hacia el maquinista que 
+está acostumbrado a utilizar una fresadora con posicionado manual. Estas caracteristicas 
+implementan los altos familiares de púa y de mesa, y al mismo tiempo dar completas 
+capacidades o abilidades de una máquina CNC.Las manijas manuales en la Tool Room 
+Mill dejan al maquinista sentir el corte, mientras que la modalidad de Index da una simple 
+y poderosa operación semi-automatica.
+Seguridad 
+ 
+ 
+ 
+ 
+        
+Lea y Siga todas las advertencias de seguridad 
+- Familiarizese con la seccion 
+de seguridad en el Manual del Operador. Mantengase alerta de la gente que se 
+encuentre alrededor de usted en su taller; las virutas que salen volando pueden lastimar 
+seriamente a la gente que no se encuentre a una distancia segura.Siempre utilize lentes 
+de seguridad. Los cortes iniciales deben hacerce a velocidades bajas y asi reducir 
+la posibilidad de producir daño a la herramienta o máquina. Asi como con cualquier 
+fresadora de marco abierto, es recomendable usar retenedores de virutas.
+3.  INSTALACION
+NOTA:
+  
+Estas recomendaciones de Instalacion son para ser usadas en 
+conjuncion con las mencionadas en el manual de referencia. 
+El material aqui provisto se otorga especi
+ﬁ
+ camente para el 
+modelo Tool Room Mill.
+R
+EQUERIMIENTOS
+ E
+LECTRICOS
+IMPORTANTE! CONSULTE SU CODIGO LOCAL DE REQUERIMIENTOS ANTES DE 
+HACER EL CABLEADO DE CUALQUIER MAQUINA.
+La fuente de poder debe tener conexion a tierra
+El rango de frecuencia es de 47-66 Hz
+La linea de voltaje no debe ﬂ
+ 
+uctuar 
+mas 
+de 
++/-5% 
+     
+Que no exista desbalanze de voltage o que no sea mas de 2%
+Que la distorsión harmonica no exeda el 10% del voltaje total RMS
+Tool Room Mill
+ 
+Requerimientos de Voltaje 
+  
+Voltaje de entrada 
+208 trifasico / 240V monofasico ±10%
+Interruptor en la Fuente de alimentacion 
+40 AMP 
+Interruptor 
+Haas 
+40 
+AMP 
+   
+Si la longitud de la linea de servicio electrico  
+Alambre de medida 10GA para corr. Trifasica 3PH 
+es menor que 100’ desde el panel, use: 
+Alambre de medida 8GA para corr. monofasica 1PH
+Si la longitud de la linea de servicio electrico   
+Alambre de medida 8GA para corr. Trifasica 3PH 
+es mayor que 100’ desde el panel, use: 
+Alambre de medida 6GA para corr. monofasica 1PH.
+1
+96-0041 Rev R
+September 2008
+S
+UPLEMENTO
+ 
+PARA
+ 
+EL
+ O
+PERADOR
