@@ -1,3 +1,5 @@
+import {abc} from './goofy.js'
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Select the component by its ID
@@ -7,5 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
         // Alert a message when the button is clicked
         alert('Button was clicked!');
+        abc();
     });
 });

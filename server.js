@@ -52,12 +52,25 @@ http.createServer(function (req, res) {
                 res.write("Styles.css NOT FOUND");
                 res.end();
             } else {
-                res.writeHead(200, { 'Content-Type': 'text/js' });
+                res.writeHead(200, { 'Content-Type': 'application/javascript' });
                 res.write(pgres);
                 res.end();
             }
         });
-    }
+    } else if (url == '/goofy.js') {
+        console.log("hey", url)
+        fs.readFile("goofy.js", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("Styles.css NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'application/javascript' });
+                res.write(pgres);
+                res.end();
+            }
+        });
+    } 
 
 }).listen(3000, function () {
     console.log("SERVER STARTED PORT: 3000");
