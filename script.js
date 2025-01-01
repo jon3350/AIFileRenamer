@@ -1,3 +1,6 @@
+const fileNameMap = new Map([]);
+window["renameFile"] = renameFile;
+
 // Select the component by its ID
 const button = document.getElementById('directoryButton');
 
@@ -42,9 +45,18 @@ async function processFiles(fileSystem)
         //writableFileSteam = await fileSystemFileHandle.createWritable();
         //writableFileSteam.write();
 
-        await fileSystemFileHandle.move(newName);
+        //The move function is dumb and this doesn't work, so I think I am going to need to make a button for each file. The
+        //button then calls a function which is based off the new file name. The function then accesses an array to know which file to
+        //rename, then attempts to rename. Should hopefully then consult the user and say "hey can I rename this"
 
-        fileSystemFileHandle.requestPermission({mode: 'readwrite'});
+        let button = document.createElement("button");
+        button.innerText = "Rename " + file.name + " to " + newName;
+
+        button.setAttribute("onclick","renameFile(\"" + newName + "\")");
+
+        fileNameMap.set(newName, fileSystemFileHandle);
+
+        document.getElementById("myDIV").appendChild(button);
     }
 }
 
@@ -107,4 +119,14 @@ async function trimPdf(file) {
 
     // Return a File object
     return newFile;
+}
+
+function renameFile(newName)
+{
+    let fileSystemFileHandle = fileNameMap.get(newName);
+
+    fileSystemFileHandle.requestPermission({mode: 'readwrite'}).then(function () {
+        fileSystemFileHandle.move(newName);
+    }
+    );
 }
