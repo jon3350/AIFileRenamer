@@ -20,7 +20,7 @@ http.createServer(function (req, res) {
                 // Replace the placeholder with the environment variable
                 const vercelUrl = process.env.VERCEL_URL || 'http://localhost:3000'; // Default to local if not on Vercel
                 // const vercelUrl = "PLZ PRINT THIS" || 'http://localhost:3000'; // Default to local if not on Vercel
-                const htmlResponse = pgres.toString().replace('<!-- VERCEL_URL_PLACEHOLDER -->', vercelUrl);
+                const htmlResponse = pgres.toString().replace('{{VERCEL_URL}}', vercelUrl);
                 console.log(htmlResponse)
 
                 res.writeHead(200, { 'Content-Type': 'text/html' });
