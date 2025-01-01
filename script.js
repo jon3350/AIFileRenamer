@@ -10,7 +10,20 @@ button.addEventListener('click', () => {
 
 async function selectFiles() {
     try {
-        let filesHandle = await window.showOpenFilePicker();
+        let filesHandle = await window.showOpenFilePicker({
+            multiple: true, // Allows multiple file selection
+            types: [
+              {
+                description: "Pdf Files",
+                accept: {
+                  "application/pdf": [".pdf"],
+                },
+              },
+            ],
+          });
+
+
+
         return filesHandle;
     } catch (err) {
       console.error('Directory selection cancelled or failed', err);
@@ -28,7 +41,9 @@ async function processFiles(fileSystem)
 
         //writableFileSteam = await fileSystemFileHandle.createWritable();
         //writableFileSteam.write();
-        
+
+        await fileSystemFileHandle.move(newName);
+
         fileSystemFileHandle.requestPermission({mode: 'readwrite'});
     }
 }
