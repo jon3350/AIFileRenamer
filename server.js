@@ -44,10 +44,6 @@ http.createServer(function (req, res) {
 
             console.log("Recieved file:", files);
 
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.write(JSON.stringify({ message: "File uploaded successfully!", file: files.uploadedFile }));
-            res.end();
-
             let filepath = ".\\" + files.uploadedFile[0].filepath;
             console.log("Filepath: " + filepath);
 
@@ -65,7 +61,12 @@ http.createServer(function (req, res) {
                 let newFile = form.uploadDir + "/" + newName + ".pdf";
                 console.log(filepath + " is being renamed to " + newName);
 
-                fs.rename(filepath, newFile,() => {console.log("Success");});
+                fs.rename(filepath, newFile,() => {console.log("Success");}); //Now, when we call this, we want to also send something to the client to rename their file
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.write(JSON.stringify({message: newName, file: files.uploadedFile}));
+            res.end();
+                
             }, () => {console.log("error reading file");}
             );
         });

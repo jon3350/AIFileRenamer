@@ -5,30 +5,31 @@ const button = document.getElementById('directoryButton');
 button.addEventListener('click', () => {
     // Alert a message when the button is clicked
     console.log('Button was clicked!');
-    let directoryHandle = selectDirectory();
-    console.log(directoryHandle);
-    directoryHandle.then(processDirectory);
+    selectFiles().then(processFiles);
 });
 
-async function selectDirectory() {
+async function selectFiles() {
     try {
-        let directoryHandle = await window.showDirectoryPicker();
-        return directoryHandle;
+        let filesHandle = await window.showOpenFilePicker();
+        return filesHandle;
     } catch (err) {
       console.error('Directory selection cancelled or failed', err);
       throw 'Directory selection cancelled or failed' + err;
     }
 }
 
-async function processDirectory(directory)
+async function processFiles(fileSystem)
 {
-    console.log(directory.name);
-    let directoryEntries = directory.values();
-    console.log(directoryEntries);
-    for await (let x of directoryEntries)
+    console.log(fileSystem);
+    for await (let fileSystemFileHandle of fileSystem)
     {
-        let file = await x.getFile();
-        await sendFile(file);
+        let file = await fileSystemFileHandle.getFile();
+        let newName = await sendFile(file) + ".pdf";
+
+        //writableFileSteam = await fileSystemFileHandle.createWritable();
+        //writableFileSteam.write();
+        
+        fileSystemFileHandle.requestPermission({mode: 'readwrite'});
     }
 }
 
@@ -52,6 +53,9 @@ async function sendFile(file) {
 
         if (response.ok) {
             console.log(`File ${file.name} uploaded successfully!`);
+            let responseJSON = await response.json();
+            console.log(responseJSON.message);
+            return responseJSON.message;
         } else {
             console.error(`Failed to upload file ${file.name}:`, response.statusText);
         }
