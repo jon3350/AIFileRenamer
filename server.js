@@ -59,9 +59,14 @@ http.createServer(function (req, res) {
                 paddedMonth + "_" + sanitizedTitle;
 
                 let newFile = form.uploadDir + "/" + newName + ".pdf";
-                console.log(filepath + " is being renamed to " + newName);
+                console.log(filepath + " should be renamed to " + newName);
 
-                fs.rename(filepath, newFile,() => {console.log("Success");}); //Now, when we call this, we want to also send something to the client to rename their file
+                // fs.rename(filepath, newFile,() => {console.log("Success");}); //Now, when we call this, we want to also send something to the client to rename their file
+                //We don't need to rename the file locally. We already did all the work in finding the new file name. Just delete the file now.
+                fs.unlink(filepath, function (err) {
+                    if (err) throw err
+                    console.log("deleted: " + filepath);
+                });
 
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.write(JSON.stringify({message: newName, file: files.uploadedFile}));

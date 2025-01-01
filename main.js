@@ -9,7 +9,7 @@ export async function generateTitleFromPdf(pdfPath) {
     const fileExtension = pdfPath.lastIndexOf(".");
     const outputName = pdfPath.slice(beginningOfFileName + 1, fileExtension);
 
-    const outputPath = "./textOutput/" + outputName;
+    const outputPath = "./textOutput/" + outputName + ".txt";
 
     console.log(outputPath);
   
@@ -20,7 +20,13 @@ export async function generateTitleFromPdf(pdfPath) {
   
       // Additional logic to generate a titleJSON from the output file
       const content = await fs.promises.readFile(outputPath, 'utf-8');
-      console.log("Text File Read")
+      console.log("Text File Read");
+
+      fs.unlink(outputPath, (err) => {
+        if (err) {
+          console.error(`Error removing file: ${err}`);
+          return;
+        }});
 
       // title generation logic from titleGenerator.js. It also prints it out for now
       // THIS MAY RUN BEFORE THE OUTPUT FILE IS UPDATED...

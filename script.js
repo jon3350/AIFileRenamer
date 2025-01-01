@@ -50,13 +50,18 @@ async function processFiles(fileSystem)
         //rename, then attempts to rename. Should hopefully then consult the user and say "hey can I rename this"
 
         let button = document.createElement("button");
-        button.innerText = "Rename " + file.name + " to " + newName;
+
+        button.innerHTML = "Rename " + file.name + "<br>to<br>" + newName;
 
         button.setAttribute("onclick","renameFile(\"" + newName + "\")");
 
         fileNameMap.set(newName, fileSystemFileHandle);
 
         document.getElementById("myDIV").appendChild(button);
+
+        let br = document.createElement("br");
+
+        document.getElementById("myDIV").appendChild(br);
     }
 }
 
