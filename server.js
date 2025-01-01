@@ -6,6 +6,7 @@ import * as formidable from 'formidable';
 import path from 'path';
 import {generateTitleFromPdf} from "./main.js";
 
+
 http.createServer(function (req, res) {
     var url = req.url;
     console.log(`Request URL: ${req.url}`);
@@ -16,8 +17,14 @@ http.createServer(function (req, res) {
                 res.write("HEAD.HTML NOT FOUND");
                 res.end();
             } else {
-                res.writeHead(200, {'Content-Type': 'text/html' });
-                res.write(pgres);
+                // Replace the placeholder with the environment variable
+                const vercelUrl = process.env.VERCEL_URL || 'http://localhost:3000'; // Default to local if not on Vercel
+                // const vercelUrl = "PLZ PRINT THIS" || 'http://localhost:3000'; // Default to local if not on Vercel
+                const htmlResponse = pgres.toString().replace('<!-- VERCEL_URL_PLACEHOLDER -->', vercelUrl);
+                console.log(htmlResponse)
+
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.write(htmlResponse);
                 res.end();
             }
         });
@@ -42,15 +49,20 @@ http.createServer(function (req, res) {
                 return;
             }
 
-            console.log("Recieved file:", files);
+            console.log("Fields:", fields);
+            console.log("Files:", files);
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.write(JSON.stringify({ message: "File uploaded successfully!", file: files.uploadedFile }));
+            res.end();
 
             let filepath = ".\\" + files.uploadedFile[0].filepath;
-            console.log("Filepath: " + filepath);
+            console.log(filepath);
 
             generateTitleFromPdf(filepath).then(function (pdfDetailsAI) {
-                console.log("AI Generated file details:");
+                console.log("again");
                 console.log(pdfDetailsAI);
-
+                console.log(pdfDetailsAI.partNumber);
                 let paddedRevision = pdfDetailsAI.revision.padStart(2, " ");
                 let paddedMonth = pdfDetailsAI.monthAsNumber.padStart(2, "0");
                 let sanitizedTitle = pdfDetailsAI.title.replace(/ /g, "_")
@@ -59,14 +71,9 @@ http.createServer(function (req, res) {
                 paddedMonth + "_" + sanitizedTitle;
 
                 let newFile = form.uploadDir + "/" + newName + ".pdf";
-                console.log(filepath + " is being renamed to " + newName);
+                console.log(newFile);
 
-                fs.rename(filepath, newFile,() => {console.log("Success");}); //Now, when we call this, we want to also send something to the client to rename their file
-
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.write(JSON.stringify({message: newName, file: files.uploadedFile}));
-            res.end();
-                
+                fs.rename(filepath, newFile,() => {console.log("Success");});
             }, () => {console.log("error reading file");}
             );
         });
@@ -103,7 +110,7 @@ http.createServer(function (req, res) {
                 res.write("script.js NOT FOUND");
                 res.end();
             } else {
-                res.writeHead(200, { 'Content-Type': 'text/javascript' });
+                res.writeHead(200, { 'Content-Type': 'text/js' });
                 res.write(pgres);
                 res.end();
             }
