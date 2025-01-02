@@ -1,12 +1,10 @@
-//app.js
-
 import http from 'http';
 import fs from 'fs';
 import * as formidable from 'formidable';
 import path from 'path';
-import {generateTitleFromPdf} from "./main.js";
+import {generateTitleFromPdf} from "../main.js";
 
-http.createServer(function (req, res) {
+function handlerfunction (req, res) {
     var url = req.url;
     console.log(`Request URL: ${req.url}`);
     if (url === "/") {
@@ -21,7 +19,13 @@ http.createServer(function (req, res) {
                 res.end();
             }
         });
-    } else if (url === "/upload" && req.method === "POST") {
+    }  else if (req.url === '/lol') {
+        // Example: Respond with a variable or a message
+        const responseData = { message: 'This is a GET response', variable: 'ExampleValue' };
+        
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(responseData));
+      }  else if (url === "/upload" && req.method === "POST") {
         const form = new formidable.IncomingForm();
         form.uploadDir = './uploads';
         form.keepExtensions = true;
@@ -127,6 +131,8 @@ http.createServer(function (req, res) {
             }
         });
     }
-}).listen(3000, function () {
+}
+
+http.createServer(handlerfunction).listen(3000, function () {
     console.log("SERVER STARTED PORT: 3000");
 });

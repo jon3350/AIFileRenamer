@@ -11,9 +11,9 @@
   },
   "name": "filetester1",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "api/server.js",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node api/server.js"
   },
   "keywords": [],
   "author": "",

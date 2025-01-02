@@ -4,12 +4,33 @@ window["renameFile"] = renameFile;
 // Select the component by its ID
 const button = document.getElementById('directoryButton');
 
-// Add a click event listener to the button
 button.addEventListener('click', () => {
-    // Alert a message when the button is clicked
-    console.log('Button was clicked!');
-    selectFiles().then(processFiles);
-});
+    fetchVariable();
+})
+
+// // Add a click event listener to the button
+// button.addEventListener('click', () => {
+//     // Alert a message when the button is clicked
+//     console.log('Button was clicked!');
+//     selectFiles().then(processFiles);
+// });
+
+async function fetchVariable() {
+    try {
+      console.log(`${window.location.href}lol`)
+    //   const response = await fetch(`${window.location.href}lol`); // Adjust the URL if necessary
+    const response = await fetch(`/lol`); // Adjust the URL if necessary
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json(); // Parse the JSON response
+      console.log('Fetched Variable:', data.variable); // Access the variable
+      return data.variable;
+    } catch (error) {
+      console.error('Error fetching variable:', error);
+      return null;
+    }
+}
 
 async function selectFiles() {
     try {
@@ -78,7 +99,8 @@ async function sendFile(file) {
     formData.append('uploadedFile', file); // Add the file to the form data
 
     try {
-        const response = await fetch('./upload', {
+        console.log(`${window.location.href}upload`)
+        const response = await fetch(`${window.location.href}upload`, {
             method: 'POST',
             body: formData, // Send the form data
         });
