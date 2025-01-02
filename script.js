@@ -40,7 +40,7 @@ async function processFiles(fileSystem)
     for await (let fileSystemFileHandle of fileSystem)
     {
         let file = await fileSystemFileHandle.getFile();
-        let newName = await sendFile(file) + ".pdf";
+        let newName = await sendFile(file);
 
         //writableFileSteam = await fileSystemFileHandle.createWritable();
         //writableFileSteam.write();
@@ -49,11 +49,27 @@ async function processFiles(fileSystem)
         //button then calls a function which is based off the new file name. The function then accesses an array to know which file to
         //rename, then attempts to rename. Should hopefully then consult the user and say "hey can I rename this"
 
+        if (fileNameMap.has(newName + ".pdf"))
+        {
+            newName = newName + " copy";
+        }
+
+        let i = 2;
+        const previousNewName = newName;
+
+        while (fileNameMap.has(newName + ".pdf"))
+        {
+            newName = previousNewName + " " + i;
+            i++;
+        }
+
+        newName = newName + ".pdf";
+        
         let button = document.createElement("button");
 
         button.innerHTML = "Rename " + file.name + "<br>to<br>" + newName;
 
-        button.setAttribute("onclick","renameFile(\"" + newName + "\")");
+        button.setAttribute("onclick","renameFile.call(this, \"" + newName + "\")");
 
         fileNameMap.set(newName, fileSystemFileHandle);
 
@@ -61,6 +77,7 @@ async function processFiles(fileSystem)
 
         let br = document.createElement("br");
 
+        document.getElementById("myDIV").appendChild(br);
         document.getElementById("myDIV").appendChild(br);
     }
 }
@@ -103,14 +120,21 @@ async function trimPdf(file) {
     let totalPages = pdfDoc.getPageCount();
     console.log("Total pages: ", totalPages);
 
-    for(let i = 1; i <= totalPages; i++)
+    const originalTotal = totalPages;
+    let pageNumber = 0;
+
+    for(let pageCursor = 1; pageCursor <= totalPages; pageCursor++)
     {
-        if ((!(i <= 15)) && (!((totalPages - i) < 3)))
+        pageNumber++;
+        if ((!(pageCursor <= 2)) && (!((totalPages - pageCursor) < 2)) && (pageNumber != Math.floor(originalTotal/2)) && (pageNumber != Math.floor(originalTotal/2) + 1))
         {
-            console.log("i:", i);
-            pdfDoc.removePage(i);
+            console.log("page cursor:", pageCursor, " page number: ", pageNumber);
+            pdfDoc.removePage(pageCursor);
             totalPages--;
-            i--;
+            pageCursor--;
+        }
+        else {
+            console.log("Skipped! page cursor: ", pageCursor, " page number: ", pageNumber);
         }
     }
 
@@ -134,4 +158,18 @@ function renameFile(newName)
         fileSystemFileHandle.move(newName);
     }
     );
+
+    this.setAttribute("disabled", "disabled");
+    if (fileSystemFileHandle.queryPermission() === "granted")
+    {
+        this.setAttribute("fileRenamed", "true");
+    }
+    else if (fileSystemFileHandle.queryPermission() === "denied")
+    {
+        this.setAttribute("fileRenamed", "false");
+    }
+    else (fileSystemFileHandle.queryPermission() === "denied")
+    {
+        this.setAttribute("fileRenamed", "error");
+    }
 }

@@ -53,7 +53,7 @@ http.createServer(function (req, res) {
 
                 let paddedRevision = pdfDetailsAI.revision.padStart(2, " ");
                 let paddedMonth = pdfDetailsAI.monthAsNumber.padStart(2, "0");
-                let sanitizedTitle = pdfDetailsAI.title.replace(/ /g, "_")
+                let sanitizedTitle = pdfDetailsAI.title.replace(/ /g, "_");
 
                 let newName = pdfDetailsAI.partNumber + "_rev_" + paddedRevision + "_" + pdfDetailsAI.year + "." + 
                 paddedMonth + "_" + sanitizedTitle;
