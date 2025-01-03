@@ -84,12 +84,14 @@ async function processFiles(fileSystem)
 
 async function sendFile(file) {
 
-    console.log("File: ", file);
-    console.log("File: ", file.name);
-
     file = await trimPdf(file);
 
-    console.log("File: ", file.name);
+    console.log(file);
+
+    window.file = file; //Ok basically my script is failing because the server is giving an error saying the XRef header is bad
+    //the thing is, when I take a look at the file itself, the data isn't garbage. Like, it's a valid PDF file, it's just that the
+    //XRef header doesn't meet some requirements. So, I want to download this file here from the client side, and see whether the trimPdf
+    //function is producing a pdf with invalid XRef
 
     const formData = new FormData();
     formData.append('uploadedFile', file); // Add the file to the form data
@@ -139,6 +141,7 @@ async function trimPdf(file) {
     }
 
     const trimmedPdfBytes = await pdfDoc.save();
+
     const blob = new Blob([trimmedPdfBytes], { type: 'application/pdf' });
 
     let newFile = new File([blob], file.name, { type: 'application/pdf' });

@@ -22,6 +22,91 @@ http.createServer(function (req, res) {
             }
         });
     } else if (url === "/upload" && req.method === "POST") {
+
+    let fileContent;
+
+    if (req.method === 'POST' && req.url === '/upload') {
+        const contentType = req.headers['content-type'];
+
+        if (!contentType || !contentType.includes('multipart/form-data')) {
+            res.writeHead(400, { 'Content-Type': 'text/plain' });
+            res.end('Invalid content type');
+            return;
+        }
+
+        const boundary = '--' + contentType.split('boundary=')[1];
+        let body = '';
+
+        // Collect the incoming data
+        req.on('data', (chunk) => {
+            body += chunk.toString();
+        });
+
+        // Once all data is received
+
+        req.on('end', () => {
+            const parts = body.split(boundary).filter((part) => part.trim() !== '--' && part.trim() !== '');
+        
+            const filePart = parts.find((part) => part.includes('Content-Disposition: form-data; name="uploadedFile"'));
+        
+            if (filePart) {
+                const [headers, ...contentParts] = filePart.split('\r\n\r\n');
+                fileContent = contentParts.join('\r\n\r\n').trim(); // Combine and clean up file content
+        
+                if (!fileContent) {
+                    console.error('File content is missing or improperly parsed');
+                    res.writeHead(400, { 'Content-Type': 'text/plain' });
+                    res.end('Failed to extract file content');
+                    return;
+                }
+        
+                const contentDisposition = headers.split('\r\n')[0];
+                const match = contentDisposition.match(/filename="(.+?)"/);
+                const filename = match ? match[1] : 'unknown';
+        
+                console.log('Received file:', filename);
+
+                fs.writeFile("./textOutput/contents.pdf", fileContent, (err) => {console.log(err);});
+
+                console.log('File content:', fileContent.slice(1, 100));
+
+                generateTitleFromPdf(fileContent).then(function (pdfDetailsAI) {
+                    console.log("AI Generated file details:");
+                    console.log(pdfDetailsAI);
+            
+                    let paddedRevision = pdfDetailsAI.revision.padStart(2, " ");
+                    let paddedMonth = pdfDetailsAI.monthAsNumber.padStart(2, "0");
+                    let sanitizedTitle = pdfDetailsAI.title.replace(/ /g, "_");
+            
+                    let newName = pdfDetailsAI.partNumber + "_rev_" + paddedRevision + "_" + pdfDetailsAI.year + "." + 
+                    paddedMonth + "_" + sanitizedTitle;
+            
+                    console.log(filepath + " should be renamed to " + newName);
+            
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.write(JSON.stringify({message: newName, file: filename}));
+                res.end();
+                    
+                }, () => {console.log("error reading file");}
+                );
+
+            } else {
+                console.error('No file part found in the form data');
+            }
+        });
+
+        req.on('error', (err) => {
+            console.error('Error receiving data:', err);
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Internal Server Error');
+        });
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('Not Found');
+    }
+
+
+        /*
         const form = new formidable.IncomingForm();
         form.uploadDir = './uploads';
         form.keepExtensions = true;
@@ -75,6 +160,7 @@ http.createServer(function (req, res) {
             }, () => {console.log("error reading file");}
             );
         });
+        */
     } else if (url === "/tailPage") {
         fs.readFile("tail.html", function (err, pgres) {
             if (err) {

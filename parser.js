@@ -20,24 +20,26 @@ function parsePdfBuffer(pdfBuffer) {
     });
 }
 
-export async function convertPdfToText(_pdfPath, _outputPath) {
+export async function convertPdfToText(_pdfContent) {
 
-    const pdfBuffer = await fs.readFile(_pdfPath);
+    const pdfBuffer = Buffer.from(_pdfContent, 'binary');
 
-    await fs.writeFile(_outputPath, '');
-
+    let pdfText = [""];
 
     try {
         // Parse the PDF buffer and extract text
         const extractedText = await parsePdfBuffer(pdfBuffer);
+        console.log(extractedText);
+
+        throw new Error("Me thinks U cool");
+
         console.log("Text extracted from PDF");
 
-        // Write the extracted text to the output file
         for (const line of extractedText) {
-            await fs.appendFile(_outputPath, line + "\n"); // Append each line to the file
+            pdfText += line; //Add each line to the string
         }
 
-        console.log('Extracted text has been written to', _outputPath);
+        return  pdfText;
     } catch (err) {
         console.error("Error processing PDF buffer:", err);
     }

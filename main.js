@@ -3,34 +3,19 @@ import { processInstructionManual} from './titleGenerator.js'
 import fs from 'fs';
 
 
-export async function generateTitleFromPdf(pdfPath) {
+export async function generateTitleFromPdf(pdfContent) {
 
-    const beginningOfFileName = pdfPath.lastIndexOf("\\");
-    const fileExtension = pdfPath.lastIndexOf(".");
-    const outputName = pdfPath.slice(beginningOfFileName + 1, fileExtension);
-
-    const outputPath = "./textOutput/" + outputName + ".txt";
-
-    console.log(outputPath);
   
     // Call the parser function
     try {
-      await convertPdfToText(pdfPath, outputPath);
+      let pdfText = await convertPdfToText(pdfContent);
       console.log('PDF processed successfully!');
-  
-      // Additional logic to generate a titleJSON from the output file
-      const content = await fs.promises.readFile(outputPath, 'utf-8');
-      console.log("Text File Read");
 
-      fs.unlink(outputPath, (err) => {
-        if (err) {
-          console.error(`Error removing file: ${err}`);
-          return;
-        }});
+      throw new Error("fu bro");
 
       // title generation logic from titleGenerator.js. It also prints it out for now
       // THIS MAY RUN BEFORE THE OUTPUT FILE IS UPDATED...
-      let pdfDetailsAI = await processInstructionManual(content);
+      let pdfDetailsAI = await processInstructionManual(pdfText);
       console.log("AI used")
 
       return pdfDetailsAI;
