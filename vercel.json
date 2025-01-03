@@ -5,6 +5,10 @@
         "destination": "/api/server.js"
       },
       {
+        "source": "/upload",
+        "destination": "/api/server.js"
+      },
+      {
         "source": "/(.*)",
         "destination": "/head.html"
       }

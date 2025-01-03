@@ -4,32 +4,60 @@ window["renameFile"] = renameFile;
 // Select the component by its ID
 const button = document.getElementById('directoryButton');
 
-button.addEventListener('click', () => {
-    fetchVariable();
-})
-
-// // Add a click event listener to the button
 // button.addEventListener('click', () => {
-//     // Alert a message when the button is clicked
-//     console.log('Button was clicked!');
-//     selectFiles().then(processFiles);
-// });
+//     fetchVariable();
+// })
+
+// Add a click event listener to the button
+button.addEventListener('click', () => {
+    // Alert a message when the button is clicked
+    console.log('Button was clicked!');
+    selectFiles().then(processFiles);
+});
+
+// async function fetchVariable() {
+//     try {
+//       console.log(`${window.location.href}lol`)
+//     //   const response = await fetch(`${window.location.href}lol`); // Adjust the URL if necessary
+//     const response = await fetch(`/lol`); // Adjust the URL if necessary
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//       }
+//       const data = await response.json(); // Parse the JSON response
+//       console.log('Fetched Variable:', data.variable); // Access the variable
+//       return data.variable;
+//     } catch (error) {
+//       console.error('Error fetching variable:', error);
+//       return null;
+//     }
+// }
 
 async function fetchVariable() {
-    try {
-      console.log(`${window.location.href}lol`)
-    //   const response = await fetch(`${window.location.href}lol`); // Adjust the URL if necessary
-    const response = await fetch(`/lol`); // Adjust the URL if necessary
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json(); // Parse the JSON response
-      console.log('Fetched Variable:', data.variable); // Access the variable
-      return data.variable;
-    } catch (error) {
-      console.error('Error fetching variable:', error);
-      return null;
+  try {
+    const url = `${window.location.origin}/lol`; // Absolute URL for the POST request
+    const requestData = {
+      message: 'PLZZZWORK', // This is your data, send it as an object
+    };
+
+    const response = await fetch(url, {
+      method: 'POST', // HTTP method
+      headers: {
+        'Content-Type': 'application/json', // Specify that we're sending JSON
+      },
+      body: JSON.stringify(requestData), // Convert JavaScript object to JSON string
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const data = await response.json(); // Parse the JSON response
+    console.log('Response:', data); // Log the response from the server
+    return data; // Return the data received from the server
+  } catch (error) {
+    console.error('Error fetching variable:', error);
+    return null;
+  }
 }
 
 async function selectFiles() {

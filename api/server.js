@@ -19,7 +19,33 @@ function handlerfunction (req, res) {
                 res.end();
             }
         });
-    }  else if (req.url === '/lol') {
+    } else if (url === '/lol' && req.method === 'POST') {
+        let data = '';
+
+        // Collect the incoming data
+        req.on('data', chunk => {
+          data += chunk;
+        });
+    
+        // When the data is fully received, parse and handle it
+        req.on('end', () => {
+          try {
+            const parsedData = JSON.parse(data); // Parse the incoming JSON data
+            console.log('Received POST data:', parsedData); // Log the parsed data
+    
+            // Set response headers and status code
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({
+              message: 'Data received successfully!',
+              receivedData: parsedData, // Echo the received data
+            }));
+          } catch (error) {
+            // Handle invalid JSON
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Invalid JSON format' }));
+          }
+        });     
+      }  else if (req.url === '/lol') {
         // Example: Respond with a variable or a message
         const responseData = { message: 'This is a GET response', variable: 'ExampleValue' };
         
