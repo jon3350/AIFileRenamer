@@ -1,3 +1,7 @@
+// Specify the workerSrc to avoid the deprecated warning
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+
 const fileNameMap = new Map([]);
 window["renameFile"] = renameFile;
 
@@ -87,18 +91,26 @@ async function sendFile(file) {
     console.log("File: ", file);
     console.log("File: ", file.name);
 
+    //file is now a Blob
     file = await trimPdf(file);
 
-    console.log("File: ", file.name);
+    console.log("File: ", file);
+    console.log("File Name: ", file.name);
 
-    const formData = new FormData();
-    formData.append('uploadedFile', file); // Add the file to the form data
+    const fileContents = await extractTextFromPdfBlob(file);
+    console.log(fileContents);
+
+    // const formData = new FormData();
+    // formData.append('uploadedFileContents', fileContents); // Add the file to the form data
 
     try {
-        const response = await fetch('./upload', {
-            method: 'POST',
-            body: formData, // Send the form data
-        });
+        const response = await fetch('/upload', {
+            method: 'POST', // Send a POST request
+            headers: {
+              'Content-Type': 'application/json', // Specify the type of data we're sending
+            },
+            body: JSON.stringify({ text: fileContents }) // Send the string inside an object as JSON
+          });
 
         if (response.ok) {
             console.log(`File ${file.name} uploaded successfully!`);
@@ -113,6 +125,7 @@ async function sendFile(file) {
     }
 }
 
+// AND RETURN A BLOB
 async function trimPdf(file) {
     const fileBuffer = await file.arrayBuffer();
     const pdfDoc = await PDFLib.PDFDocument.load(fileBuffer); // Access PDFDocument via pdfLib
@@ -140,6 +153,8 @@ async function trimPdf(file) {
 
     const trimmedPdfBytes = await pdfDoc.save();
     const blob = new Blob([trimmedPdfBytes], { type: 'application/pdf' });
+
+    return blob;
 
     let newFile = new File([blob], file.name, { type: 'application/pdf' });
 
@@ -173,3 +188,34 @@ function renameFile(newName)
         this.setAttribute("fileRenamed", "error");
     }
 }
+
+
+
+
+
+// Do this on client side
+// Function to convert a Blob PDF to a string of text
+async function extractTextFromPdfBlob(pdfBlob) {
+    // Convert Blob to ArrayBuffer
+    const arrayBuffer = await pdfBlob.arrayBuffer();
+  
+    try {
+      // Use pdf.js to load the PDF from the ArrayBuffer
+      const pdfDoc = await pdfjsLib.getDocument(new Uint8Array(arrayBuffer)).promise;
+  
+      let extractedText = '';
+  
+      // Loop through all pages of the PDF and extract text
+      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+        const page = await pdfDoc.getPage(pageNum);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items.map(item => item.str).join(' '); // Join the text items
+        extractedText += pageText + '\n'; // Append the page text
+      }
+  
+      return extractedText;
+    } catch (error) {
+      console.error("Error extracting text from PDF: ", error);
+      return null;
+    }
+  }
