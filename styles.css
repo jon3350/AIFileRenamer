@@ -16,8 +16,9 @@ h1 {
 
 /* Style the paragraph */
 p {
-    margin: 20px 0;
-}
+    margin: 20px auto; /* Top and bottom: 20px, left and right: auto */
+    width: 60%;       /* Ensure the paragraph takes up 60% of the page width */
+ }
 
 /* Style the link */
 button {
@@ -27,6 +28,30 @@ button {
     border: 2px solid #007acc;
     padding: 5px 10px;
     border-radius: 5px;
+}
+
+button:disabled {
+    color: gray;
+    border-color: gray;
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+/* Button styling for filerenamed="false" */
+button[filerenamed="false"] {
+    color: gray;
+    border-color: gray;
+    background-color: rgb(247 200 200);
+    cursor: not-allowed;
+}
+
+/* Button styling for filerenamed="true" */
+button[filerenamed="true"] {
+    color: gray;
+    border-color: gray;
+    background-color: rgb(209 232 209);
+    cursor: not-allowed;
 }
 
 /* Add hover effect to the link */

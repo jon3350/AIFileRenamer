@@ -46,10 +46,9 @@ http.createServer(function (req, res) {
             if (text) {
               const storedString = text; // Store the string in memory. This is the string of the pdf contents
 
-
+              
               const newName = await generateTitleFromPdfText(storedString);
               console.log("newNameServerJS:", newName);
-
 
 
               res.writeHead(200, { 'Content-Type': 'application/json' });

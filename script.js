@@ -80,9 +80,10 @@ async function processFiles(fileSystem)
         document.getElementById("myDIV").appendChild(button);
 
         let br = document.createElement("br");
+        let br2 = document.createElement("br");
 
         document.getElementById("myDIV").appendChild(br);
-        document.getElementById("myDIV").appendChild(br);
+        document.getElementById("myDIV").appendChild(br2);
     }
 }
 
@@ -165,27 +166,35 @@ async function trimPdf(file) {
     return newFile;
 }
 
-function renameFile(newName)
+async function renameFile(newName)
 {
     let fileSystemFileHandle = fileNameMap.get(newName);
 
-    fileSystemFileHandle.requestPermission({mode: 'readwrite'}).then(function () {
-        fileSystemFileHandle.move(newName);
-    }
-    );
-
     this.setAttribute("disabled", "disabled");
-    if (fileSystemFileHandle.queryPermission() === "granted")
-    {
-        this.setAttribute("fileRenamed", "true");
-    }
-    else if (fileSystemFileHandle.queryPermission() === "denied")
-    {
-        this.setAttribute("fileRenamed", "false");
-    }
-    else (fileSystemFileHandle.queryPermission() === "denied")
-    {
-        this.setAttribute("fileRenamed", "error");
+
+    let setAttributeTrue = () => {this.setAttribute("fileRenamed", "true");}
+    let setAttributeFalse = () => {this.setAttribute("fileRenamed", "false");}  
+    let setAttributeError = () => {this.setAttribute("fileRenamed", "error");}
+
+    let userDesire = window.confirm("Rename " + fileSystemFileHandle.filename + " to " + newName);
+
+    if (userDesire == true) {
+    fileSystemFileHandle.requestPermission({mode: 'readwrite'}).then(function (value) {
+        if (value === "granted")
+        {
+            fileSystemFileHandle.move(newName).then(setAttributeTrue, () => {
+                console.log("error renaming file");
+            });
+        }
+        else (value === "denied")
+        {
+            setAttributeFalse();
+        }
+
+    });
+    } else {
+        setAttributeFalse();
+        console.log("cancelled");
     }
 }
 
