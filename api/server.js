@@ -25,63 +25,46 @@ http.createServer(function (req, res) {
             }
         });
     } else if (url === "/upload" && req.method === "POST") {
-        let data = [];
+        console.log("Fetching...")
 
+        let body = '';
+
+        // Collect the data sent in the request
         req.on('data', chunk => {
-          data.push(chunk); // Collect data chunks
+          body += chunk;
         });
     
+        // When the data is fully received, process the string
         req.on('end', async () => {
-          const blobBuffer = Buffer.concat(data); // Combine all chunks into a buffer
-          console.log('Received Blob (binary data):', blobBuffer);
+          try {
+            // Parse the JSON body to get the string
+            const parsedBody = JSON.parse(body);
+            const { text } = parsedBody;
 
-          const uint8Array = new Uint8Array(blobBuffer);
-          console.log('Converted to unit8Array:', uint8Array);
-
-
-                  //   Process the binary PDF Blob
-                  try {
-                    const text = await extractTextFromPdf(uint8Array);
-                    console.log('Extracted Text from PDF:', text);
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ message: 'Blob received successfully' }));
-                  } catch (error) {
-                    console.error('Error extracting text from PDF:', error);
-                    res.writeHead(404, { 'Content-Type': 'text/plain' });
-                    res.write("Error in extractTextFromPdf");
-                    res.end();
-                  }
-            
-
-
+            console.log("sendText:", text);
     
-        //   Process the binary PDF Blob
-        //   try {
-        //     const text = await extractTextFromPdf(uint8Array);
-        //     console.log('Extracted Text from PDF:', text);
-        //     // generateTitleFromPdfText(text).then(function (pdfDetailsAI) {
-        //     //     console.log("AI Generated file details:");
-        //     //     console.log(pdfDetailsAI);
-        //     // } );
-    
+            if (text) {
+              const storedString = text; // Store the string in memory. This is the string of the pdf contents
 
-        //     res.writeHead(200, { 'Content-Type': 'application/json' });
-        //     // res.write(JSON.stringify({message: "IDK"}));
-        //     res.end();
+
+              const newName = await generateTitleFromPdfText(storedString);
+              console.log("newNameServerJS:", newName);
 
 
 
-        //   } catch (error) {
-        //     console.error('Error extracting text from PDF:', error);
-        //   }
+              res.writeHead(200, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ message: newName }));
 
 
-        });
-    
-        req.on('error', err => {
-          console.error('Error receiving blob:', err);
-          res.writeHead(500);
-          res.end();
+
+            } else {
+              res.writeHead(400, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ message: 'No string provided!' }));
+            }
+          } catch (error) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Error processing request.' }));
+          }
         });
 
         // const form = new formidable.IncomingForm();

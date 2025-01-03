@@ -11,7 +11,7 @@ export async function generateTitleFromPdfText(pdfText) {
     console.log("AI Generated file details:");
     console.log(pdfDetailsAI);
 
-    return pdfDetailsAI;
+    // return pdfDetailsAI;
 
     // create the title following certain rules
     const paddedRevision = pdfDetailsAI.revision.padStart(2, " ");
@@ -21,6 +21,9 @@ export async function generateTitleFromPdfText(pdfText) {
     const newName = pdfDetailsAI.partNumber + "_rev_" + paddedRevision + "_" + pdfDetailsAI.year + "." + 
     paddedMonth + "_" + sanitizedTitle;
 
+    console.log("NewNameMainJS:", newName);
+
+    // result when promise gets resolved
     return newName;
 
   } catch (err) {
