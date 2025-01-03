@@ -87,9 +87,11 @@ async function sendFile(file) {
     console.log("File: ", file);
     console.log("File: ", file.name);
 
+    //file is now a Blob
     file = await trimPdf(file);
 
-    console.log("File: ", file.name);
+    console.log("File: ", file);
+    console.log("File Name: ", file.name);
 
     const formData = new FormData();
     formData.append('uploadedFile', file); // Add the file to the form data
@@ -97,6 +99,9 @@ async function sendFile(file) {
     try {
         const response = await fetch('./upload', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/octet-stream', // Specify binary data
+              },
             body: formData, // Send the form data
         });
 
@@ -113,6 +118,7 @@ async function sendFile(file) {
     }
 }
 
+// AND RETURN A BLOB
 async function trimPdf(file) {
     const fileBuffer = await file.arrayBuffer();
     const pdfDoc = await PDFLib.PDFDocument.load(fileBuffer); // Access PDFDocument via pdfLib
@@ -140,6 +146,8 @@ async function trimPdf(file) {
 
     const trimmedPdfBytes = await pdfDoc.save();
     const blob = new Blob([trimmedPdfBytes], { type: 'application/pdf' });
+
+    return blob;
 
     let newFile = new File([blob], file.name, { type: 'application/pdf' });
 
