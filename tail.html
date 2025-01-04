@@ -1,16 +1,23 @@
-<!-- tail.html -->
-
 <!DOCTYPE html>
-<html>
-
-<head>
-    <title>Hello World</title>
+<html><head>
+    <title>Allendale Machinery Systems File Renamer</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="https://unpkg.com/pdf-lib" async=""></script>
+    <!-- Link to the CDN-hosted pdf.js library with defer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer=""></script>
+    <script src="script.js" type="module" defer=""></script>
 </head>
 
-<body>
+<body id="body" style="background: rgb(255, 205, 205);">
+    <br>
+    <h1>Instructions</h1>
+    <p>This website takes in manual pdfs and renames each file in a given convention</p>
+    <p>Manuals are renamed by their part number, revision, year, month, and title.</p>
+    <p>Here is a <a href="https://www.youtube.com/" target="_blank">tutorial</a> if you are still confused</p>
+    <p>Click the "pick files" button to get started</p>
+    
+    <p><button id="directoryButton">Pick files</button></p>
+    <table id="table">
 
-    <h1>WORKING</h1>
-
-</body>
-
-</html>
+    </table>
+</body></html>

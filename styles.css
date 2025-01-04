@@ -1,33 +1,122 @@
 /* Apply a background color to the body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
+    background-color: rgb(255, 196, 196);
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
+body[title="title"]
+{
+    animation-name: bg;
+    animation-duration: 4s;
+}
+
+@keyframes bg {
+    0%   {background-color: rgb(255, 255, 255);}
+    100%  {background-color: rgb(255, 196, 196);}
+  }
+
 /* Style the heading */
 h1 {
-    color: #007acc;
-    margin-top: 20px;
+    padding-top: 5%;
+    color: #000000;
+    margin: auto;
+    font: 500% Archivo, sans-serif;
+}
+
+h1[title = "title"] {
+    padding-top: 10%;
+    position: relative;
+    color: #000000;
+    margin: auto;
+    font: 200% Akzidenz-Grotesk, sans-serif;
+    animation-name: titleh1;
+    animation-duration: 4s;
+}
+
+@keyframes titleh1 {
+    0%   {bottom: 40%;}
+    100%  {bottom: 0%;}
+  }
+
+h2{
+
+}
+
+h2[title = "title"] {
+    position: relative;
+    animation-name: titleh2;
+    animation-duration: 6s;
+}
+
+@keyframes titleh2 {
+    0%   {bottom: 60%;}
+    33%   {bottom: 60%;}
+    100%  {bottom: 0%;}
+  }
+
+
+img{
+    position: relative;
+    animation-name: titleimg;
+    animation-duration: 8s;
+}
+
+@keyframes titleimg {
+    0%   {bottom: 150%;}
+    50%   {bottom: 150%;}
+    100%  {bottom: 0%;}
+  }
+
+u {
+    color: #ff5353;
+}
+
+div{
+    height: 70vh;
 }
 
 /* Style the paragraph */
 p {
-    margin: 20px auto; /* Top and bottom: 20px, left and right: auto */
+    margin: 10px auto; /* Top and bottom: 20px, left and right: auto */
     width: 60%;       /* Ensure the paragraph takes up 60% of the page width */
+    font: 150% Archivo, sans-serif;
  }
 
 /* Style the link */
 button {
-    color: #007acc;
-    text-decoration: none;
+    color: #e5b2b2;
     font-weight: bold;
-    border: 2px solid #007acc;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-style: hidden;
+    border-radius: 15%;
+}
+
+
+
+button[start = "start"]{
+    font-size: 500%;
+    position: relative;
+    animation-name: titlebutton;
+    animation-duration: 10s;
+}
+
+@keyframes titlebutton {
+    0%   {opacity: 0;}
+    70%   {opacity: 0;}
+    100%   {opacity: 1;}
+  }
+
+  
+button[renaming="true"] {
+    background-color: rgb(255, 255, 255);
+}
+
+button[id = "directoryButton"]{
+    font-size: 200%;
+    margin-top: 10vh;
 }
 
 button:disabled {
@@ -42,7 +131,7 @@ button:disabled {
 button[filerenamed="false"] {
     color: gray;
     border-color: gray;
-    background-color: rgb(247 200 200);
+    background-color: rgb(255, 110, 110);
     cursor: not-allowed;
 }
 
@@ -54,8 +143,20 @@ button[filerenamed="true"] {
     cursor: not-allowed;
 }
 
-/* Add hover effect to the link */
-a:hover {
-    background-color: #007acc;
-    color: white;
+a {
+    text-decoration: underline;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+  }
+  
+td, th {
+    text-align: center;
+    padding: 8px;
+    width: 33vw; /* Set a fixed width */
+    height: 5vh; /* Set a fixed height */
 }

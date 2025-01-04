@@ -65,61 +65,7 @@ http.createServer(function (req, res) {
             res.end(JSON.stringify({ message: 'Error processing request.' }));
           }
         });
-
-        // const form = new formidable.IncomingForm();
-        // form.uploadDir = './uploads';
-        // form.keepExtensions = true;
-
-        // // Handle file uploads
-        // form.on('fileBegin', (formName, file) => {
-        //     // Customize the file path
-        //     const sanitizedFileName = file.originalFilename.replace(/[^a-zA-Z0-9.-]/g, '_'); // Sanitize filename
-        //     file.filepath = path.join('./uploads', sanitizedFileName);
-        // });
-
-        // form.parse(req, (err, fields, files) => {
-        //     if (err) {
-        //         console.error("Error parsing form:", err);
-        //         res.writeHead(500, { 'Content-Type': 'text/plain' });
-        //         res.write("Internal Server Error");
-        //         res.end();
-        //         return;
-        //     }
-
-        //     console.log("Recieved file:", files);
-
-        //     let filepath = ".\\" + files.uploadedFile[0].filepath;
-        //     console.log("Filepath: " + filepath);
-
-        //     generateTitleFromPdf(filepath).then(function (pdfDetailsAI) {
-        //         console.log("AI Generated file details:");
-        //         console.log(pdfDetailsAI);
-
-        //         let paddedRevision = pdfDetailsAI.revision.padStart(2, " ");
-        //         let paddedMonth = pdfDetailsAI.monthAsNumber.padStart(2, "0");
-        //         let sanitizedTitle = pdfDetailsAI.title.replace(/ /g, "_");
-
-        //         let newName = pdfDetailsAI.partNumber + "_rev_" + paddedRevision + "_" + pdfDetailsAI.year + "." + 
-        //         paddedMonth + "_" + sanitizedTitle;
-
-        //         let newFile = form.uploadDir + "/" + newName + ".pdf";
-        //         console.log(filepath + " should be renamed to " + newName);
-
-        //         // fs.rename(filepath, newFile,() => {console.log("Success");}); //Now, when we call this, we want to also send something to the client to rename their file
-        //         //We don't need to rename the file locally. We already did all the work in finding the new file name. Just delete the file now.
-        //         fs.unlink(filepath, function (err) {
-        //             if (err) throw err
-        //             console.log("deleted: " + filepath);
-        //         });
-
-        //     res.writeHead(200, { 'Content-Type': 'application/json' });
-        //     res.write(JSON.stringify({message: newName, file: files.uploadedFile}));
-        //     res.end();
-                
-        //     }, () => {console.log("error reading file");}
-        //     );
-        // });
-    } else if (url === "/tailPage") {
+    } else if (url === "/tail.html") {
         fs.readFile("tail.html", function (err, pgres) {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -166,6 +112,19 @@ http.createServer(function (req, res) {
                 res.end();
             } else {
                 res.writeHead(200, { 'Content-Type': 'image/x-icon' });
+                res.write(pgres);
+                res.end();
+            }
+        });
+    } else if (url == '/AMS.png') {
+        console.log("hey", url)
+        fs.readFile("AMS.png", function (err, pgres) {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.write("AMS.png NOT FOUND");
+                res.end();
+            } else {
+                res.writeHead(200, { 'Content-Type': 'image/png' });
                 res.write(pgres);
                 res.end();
             }

@@ -8,6 +8,24 @@ window["renameFile"] = renameFile;
 // Select the component by its ID
 const button = document.getElementById('directoryButton');
 
+let table = document.getElementById("table");
+
+let addButton = (button) => {
+    // Check if a <tbody> exists
+    let lastTRow = table.querySelector("tr:last-of-type");
+    console.log(lastTRow);
+
+    // If there's no <tbody> or the last one already has three rows, create a new <tbody>
+    if (!lastTRow || lastTRow.childElementCount >= 3) {
+        lastTRow = document.createElement("tr");
+        table.appendChild(lastTRow);
+    }
+
+    // Create a new row and cell for the button
+    let cell = lastTRow.insertCell();
+    cell.appendChild(button);
+}
+
 // Add a click event listener to the button
 button.addEventListener('click', () => {
     // Alert a message when the button is clicked
@@ -75,15 +93,11 @@ async function processFiles(fileSystem)
 
         button.setAttribute("onclick","renameFile.call(this, \"" + newName + "\")");
 
+        button.setAttribute("renaming","true");
+
         fileNameMap.set(newName, fileSystemFileHandle);
 
-        document.getElementById("myDIV").appendChild(button);
-
-        let br = document.createElement("br");
-        let br2 = document.createElement("br");
-
-        document.getElementById("myDIV").appendChild(br);
-        document.getElementById("myDIV").appendChild(br2);
+        addButton(button);
     }
 }
 
@@ -129,7 +143,7 @@ async function sendFile(file) {
 // AND RETURN A BLOB
 async function trimPdf(file) {
     const fileBuffer = await file.arrayBuffer();
-    const pdfDoc = await PDFLib.PDFDocument.load(fileBuffer); // Access PDFDocument via pdfLib
+    const pdfDoc = await PDFLib.PDFDocument.load(fileBuffer, { ignoreEncryption: true }); // Access PDFDocument via pdfLib
 
     let totalPages = pdfDoc.getPageCount();
     console.log("Total pages: ", totalPages);
@@ -228,3 +242,5 @@ async function extractTextFromPdfBlob(pdfBlob) {
       return null;
     }
   }
+
+  
