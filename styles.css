@@ -97,6 +97,7 @@ button {
 
 
 button[start = "start"]{
+    
     font-size: 500%;
     position: relative;
     animation-name: titlebutton;

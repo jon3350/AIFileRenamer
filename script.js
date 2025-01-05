@@ -62,9 +62,10 @@ async function processFiles(fileSystem)
     for await (let fileSystemFileHandle of fileSystem)
     {
         let file = await fileSystemFileHandle.getFile();
+        try
+        {
         let newName = await sendFile(file);
-
-        //writableFileSteam = await fileSystemFileHandle.createWritable();
+            //writableFileSteam = await fileSystemFileHandle.createWritable();
         //writableFileSteam.write();
 
         //The move function is dumb and this doesn't work, so I think I am going to need to make a button for each file. The
@@ -72,32 +73,35 @@ async function processFiles(fileSystem)
         //rename, then attempts to rename. Should hopefully then consult the user and say "hey can I rename this"
 
         if (fileNameMap.has(newName + ".pdf"))
-        {
-            newName = newName + " copy";
+            {
+                newName = newName + " copy";
+            }
+    
+            let i = 2;
+            const previousNewName = newName;
+    
+            while (fileNameMap.has(newName + ".pdf"))
+            {
+                newName = previousNewName + " " + i;
+                i++;
+            }
+    
+            newName = newName + ".pdf";
+            
+            let button = document.createElement("button");
+    
+            button.innerHTML = "Rename " + file.name + "<br>to<br>" + newName;
+    
+            button.setAttribute("onclick","renameFile.call(this, \"" + newName + "\")");
+    
+            button.setAttribute("renaming","true");
+    
+            fileNameMap.set(newName, fileSystemFileHandle);
+    
+            addButton(button);
+        } catch (err) {
+        console.log("error: ", err);
         }
-
-        let i = 2;
-        const previousNewName = newName;
-
-        while (fileNameMap.has(newName + ".pdf"))
-        {
-            newName = previousNewName + " " + i;
-            i++;
-        }
-
-        newName = newName + ".pdf";
-        
-        let button = document.createElement("button");
-
-        button.innerHTML = "Rename " + file.name + "<br>to<br>" + newName;
-
-        button.setAttribute("onclick","renameFile.call(this, \"" + newName + "\")");
-
-        button.setAttribute("renaming","true");
-
-        fileNameMap.set(newName, fileSystemFileHandle);
-
-        addButton(button);
     }
 }
 
@@ -107,7 +111,11 @@ async function sendFile(file) {
     console.log("File: ", file.name);
 
     //file is now a Blob
+    try {
     file = await trimPdf(file);
+    } catch (err) {
+    throw err;
+    }
 
     console.log("File: ", file);
     console.log("File Name: ", file.name);
@@ -143,7 +151,14 @@ async function sendFile(file) {
 // AND RETURN A BLOB
 async function trimPdf(file) {
     const fileBuffer = await file.arrayBuffer();
-    const pdfDoc = await PDFLib.PDFDocument.load(fileBuffer, { ignoreEncryption: true }); // Access PDFDocument via pdfLib
+    let pdfDoc;
+    
+    try
+    {
+    pdfDoc = await PDFLib.PDFDocument.load(fileBuffer); // Access PDFDocument via pdfLib
+    } catch(err) {
+    throw err;
+    }
 
     let totalPages = pdfDoc.getPageCount();
     console.log("Total pages: ", totalPages);
